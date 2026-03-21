@@ -26,7 +26,7 @@
         { title: "画像追加", price: "+¥500", note: "2枚ごと", type: "blue" },
         { title: "動画追加", price: "+¥1,000", note: "1個ごと", type: "red" },
         { title: "ドメイン設定", price: "+¥5,000", note: "代行費用", type: "blue" },
-        { title: "その他オプションの相談", price: "+¥1,000 ~", note: "相談に応じて", type: "blue" }
+        { title: "その他オプションの相談", price: "+¥1,000 ~", note: "相談に応じて", type: "purple" }
     ];
 
     return (
