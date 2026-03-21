@@ -1,7 +1,7 @@
 import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
 import Service from "@/components/sections/Service";
-import Works from "@/components/sections/Works"; // 追加！
+import Works from "@/components/sections/Works"; 
 import Flow from "@/components/sections/Flow";
 import Contact from "@/components/sections/Contact";
 
@@ -11,7 +11,7 @@ export default function Home() {
       <Hero />
       <About />
       <Service />
-      <Works /> {/* ServiceとFlowの間に入れたよ */}
+      <Works /> 
       <Flow />
       <Contact />
       
