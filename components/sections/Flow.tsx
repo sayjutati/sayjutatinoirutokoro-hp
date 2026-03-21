@@ -9,7 +9,7 @@
     ];
 
     return (
-        <section id="flow" className="py-20 bg-white">
+        <section id="flow" className="scroll-mt-[12vh] py-20 bg-white">
         <div className="container mx-auto px-6 max-w-4xl">
             <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-slate-900">Flow</h2>

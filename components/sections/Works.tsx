@@ -25,7 +25,7 @@
     ];
 
     return (
-        <section id="works" className="py-24 bg-white">
+        <section id="works" className="scroll-mt-[12vh] py-24 bg-white">
         <div className="container mx-auto px-6">
             <div className="text-center mb-16">
             <h2 className="text-4xl font-black text-slate-900 tracking-tight">Works</h2>

@@ -30,7 +30,7 @@
     ];
 
     return (
-        <section id="service" className="py-24 bg-brand-light">
+        <section id="service" className="scroll-mt-[12vh] py-24 bg-brand-light">
         <div className="container mx-auto px-6">
             
             {/* --- プラン表タイトル --- */}
