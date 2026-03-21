@@ -1,138 +1,92 @@
     "use client";
     import { motion } from "framer-motion";
-    import { useState } from "react";
-
-    // --- Swiper（カルーセル）のインポート ---
-    import { Swiper, SwiperSlide } from 'swiper/react';
-    import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-
-    // SwiperのCSSをインポート（globals.cssに書くよりここで管理した方が楽！）
-    import 'swiper/css';
-    import 'swiper/css/navigation';
-    import 'swiper/css/pagination';
 
     export default function Service() {
-    // --- 実績データ（画像リストを配列に変更！） ---
-    const works = [
+    const plans = [
         {
-        title: "猫喰ぐるる 公式サイト",
-        url: "https://example.com",
-        // スクショを4枚並べる配列（public/images/内のファイル名に合わせて！）
-        images: [
-            "/images/samune1.png",    // 1枚目（メイン）
-            "/images/samune1_2.png",  // 2枚目（仮のファイル名）
-            "/images/samune1_3.png",  // 3枚目（仮のファイル名）
-            "/images/samune1_4.png",  // 4枚目（仮のファイル名）
-        ],
-        description: "VTuber公式サイトの制作。世界観を重視したデザインとアニメーションを実装。",
-        tags: ["Next.js", "Tailwind CSS", "Framer Motion"]
+        name: "ライトプラン",
+        price: "3,000",
+        description: "まずは名刺代わりのサイトが欲しい方へ",
+        features: ["構成・レイアウト固定", "カラー・テキスト変更可能", "画像10枚まで掲載", "レスポンシブ対応"],
+        color: "brand-blue",
+        recommended: false
         },
         {
-        title: "クリエイター向け ポートフォリオ",
-        url: "#",
-        images: [
-            "/images/samune2.png",
-            "/images/samune2_2.png", // 仮
-        ],
-        description: "イラストレーターさんの作品集サイト。シンプルで見やすさを追求。",
-        tags: ["React", "CSS Modules"]
+        name: "スタンダードプラン",
+        price: "10,000",
+        description: "こだわりと世界観を詰め込みたい方へ",
+        features: ["ヒアリングによるデザイン微調整", "リッチなアニメーション実装", "YouTube等の動画埋め込み(2個)", "SEO基本設定"],
+        color: "brand-red",
+        recommended: true
         }
     ];
 
     return (
-        <section id="service" className="py-20 bg-brand-light">
+        <section id="service" className="py-24 bg-brand-light">
         <div className="container mx-auto px-6">
-            
-            {/* --- プラン紹介（既存部分） --- */}
             <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-slate-900">Service & Price</h2>
-            <div className="mt-2 w-16 h-1 bg-brand-red mx-auto"></div>
-            <p className="mt-4 text-slate-600">個人クリエイター向けの作りやすいプランを用意しました。</p>
+            <h2 className="text-4xl font-black text-slate-900 tracking-tight">Service & Price</h2>
+            <div className="mt-3 w-20 h-1.5 bg-brand-red mx-auto rounded-full"></div>
             </div>
 
-            {/* ...（プランのカード部分は今のまま残す）... */}
-            <div className="flex flex-col md:flex-row gap-8 max-w-5xl mx-auto mb-24">
-            {/* さっきコピペしたライト・スタンダードプランのカードをここに入れる */}
-            </div>
-
-
-            {/* --- 実績セクション --- */}
-            <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-slate-900">Works</h2>
-            <div className="mt-2 w-16 h-1 bg-brand-blue mx-auto mb-4"></div>
-            {/* 制作数バッジ */}
-            <div className="inline-block bg-white px-6 py-2 rounded-full shadow-sm border border-brand-blue/20">
-                <span className="text-slate-600 font-bold">Total Works: </span>
-                <span className="text-2xl font-black text-brand-blue ml-2">12+</span>
-            </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto">
-            {works.map((work, index) => (
-                <motion.div 
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="bg-white rounded-2xl shadow-xl overflow-hidden group"
+            <div className="flex flex-col md:flex-row gap-8 max-w-5xl mx-auto items-stretch">
+            {plans.map((plan, i) => (
+                <motion.div
+                key={i}
+                whileHover={{ y: -10 }}
+                className={`flex-1 relative p-1 rounded-[2.5rem] ${plan.recommended ? 'bg-gradient-to-br from-brand-red to-orange-400 shadow-2xl scale-105 z-10' : 'bg-slate-200'}`}
                 >
-                {/* --- カルーセルエリア（Swiper実装！） --- */}
-                <div className="aspect-video bg-slate-200 relative overflow-hidden group">
-                    <Swiper
-                    // 使うモジュール（ナビゲーション、ページネーション、自動再生）
-                    modules={[Navigation, Pagination, Autoplay]}
-                    spaceBetween={0} // スライド間の余白
-                    slidesPerView={1}  // 一度に見せるスライド数
-                    // 左右のボタンの設定（Tailwindで装飾しやすいようにクラス名を指定）
-                    navigation={{
-                        nextEl: `.swiper-button-next-${index}`,
-                        prevEl: `.swiper-button-prev-${index}`,
-                    }}
-                    // 下のドット（ページネーション）の設定
-                    pagination={{ clickable: true, el: `.swiper-pagination-${index}` }}
-                    // 自動再生の設定（5秒ごとに切り替え）
-                    autoplay={{ delay: 5000, disableOnInteraction: false }}
-                    loop={true} // ループさせる
-                    className="w-full h-full"
-                    >
-                    {work.images.map((img, imgIndex) => (
-                        <SwiperSlide key={imgIndex}>
-                        <img 
-                            src={img} 
-                            alt={`${work.title} screen ${imgIndex + 1}`} 
-                            className="w-full h-full object-cover" 
-                        />
-                        </SwiperSlide>
-                    ))}
-
-                    {/* 自作のナビゲーションボタン（Tailwindで装飾） */}
-                    <div className={`swiper-button-prev swiper-button-prev-${index} !text-white !w-8 !h-8 !bg-black/50 rounded-full after:!text-sm group-hover:opacity-100 opacity-0 transition-opacity z-10`}></div>
-                    <div className={`swiper-button-next swiper-button-next-${index} !text-white !w-8 !h-8 !bg-black/50 rounded-full after:!text-sm group-hover:opacity-100 opacity-0 transition-opacity z-10`}></div>
-                    
-                    {/* 自作のページネーション（ドット、Tailwindで装飾） */}
-                    <div className={`swiper-pagination swiper-pagination-${index} !bottom-4 z-10`}></div>
-                    </Swiper>
-                </div>
-
-                {/* 実績詳細 */}
-                <div className="p-8">
-                    <h3 className="text-xl font-bold text-slate-800 flex items-center justify-between">
-                    {work.title}
-                    <a href={work.url} target="_blank" className="text-sm text-brand-blue hover:underline">Visit Site ↗</a>
-                    </h3>
-                    <p className="mt-4 text-slate-600 text-sm leading-relaxed">
-                    {work.description}
-                    </p>
-                    <div className="mt-6 flex flex-wrap gap-2">
-                    {work.tags.map(tag => (
-                        <span key={tag} className="text-[10px] font-bold px-2 py-1 bg-brand-light text-slate-500 rounded uppercase tracking-wider">{tag}</span>
-                    ))}
+                <div className="bg-white h-full rounded-[2.3rem] p-8 md:p-10 flex flex-col">
+                    {plan.recommended && (
+                    <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-brand-red text-white text-sm font-black px-6 py-2 rounded-full shadow-xl tracking-widest uppercase">Recommended</span>
+                    )}
+                    <h3 className="text-xl font-bold text-slate-500 mb-2 uppercase tracking-tighter">{plan.name}</h3>
+                    <div className="flex items-baseline mb-4">
+                    <span className="text-5xl font-black text-slate-900">¥{plan.price}</span>
+                    <span className="text-slate-400 ml-1 font-bold">〜</span>
                     </div>
+                    <p className="text-slate-500 text-sm mb-8 font-medium">{plan.description}</p>
+                    
+                    <ul className="space-y-4 mb-10 flex-grow">
+                    {plan.features.map(f => (
+                        <li key={f} className="flex items-start text-slate-700 font-medium">
+                        <svg className={`w-5 h-5 mr-3 flex-shrink-0 ${plan.recommended ? 'text-brand-red' : 'text-brand-blue'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path></svg>
+                        {f}
+                        </li>
+                    ))}
+                    </ul>
+
+                    <a href="#contact" className={`block text-center py-4 rounded-2xl font-black transition-all ${plan.recommended ? 'bg-brand-red text-white shadow-lg hover:shadow-brand-red/30' : 'bg-slate-100 text-slate-800 hover:bg-slate-200'}`}>
+                    このプランで相談する
+                    </a>
                 </div>
                 </motion.div>
             ))}
             </div>
 
+            {/* オプション表 */}
+            <div className="mt-20 max-w-3xl mx-auto">
+            <div className="bg-white/50 backdrop-blur-md border border-white p-8 rounded-[2rem] shadow-sm">
+                <h4 className="text-center font-black text-slate-800 mb-8 flex items-center justify-center gap-3">
+                <span className="w-8 h-[2px] bg-slate-200"></span>
+                Options
+                <span className="w-8 h-[2px] bg-slate-200"></span>
+                </h4>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {[
+                    { title: "画像追加", price: "+¥500", note: "2枚ごと" },
+                    { title: "動画追加", price: "+¥1,000", note: "1個ごと" },
+                    { title: "ドメイン設定", price: "+¥5,000", note: "代行費用" }
+                ].map(opt => (
+                    <div key={opt.title} className="text-center p-4 bg-white rounded-2xl shadow-sm border border-slate-100">
+                    <p className="text-xs font-bold text-slate-400 mb-1">{opt.title}</p>
+                    <p className="text-xl font-black text-slate-800">{opt.price}</p>
+                    <p className="text-[10px] font-bold text-slate-400 mt-1 uppercase tracking-widest">{opt.note}</p>
+                    </div>
+                ))}
+                </div>
+            </div>
+            </div>
         </div>
         </section>
     );

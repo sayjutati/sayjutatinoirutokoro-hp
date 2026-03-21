@@ -1,6 +1,7 @@
 import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
 import Service from "@/components/sections/Service";
+import Works from "@/components/sections/Works"; // 追加！
 import Flow from "@/components/sections/Flow";
 import Contact from "@/components/sections/Contact";
 
@@ -10,12 +11,13 @@ export default function Home() {
       <Hero />
       <About />
       <Service />
+      <Works /> {/* ServiceとFlowの間に入れたよ */}
       <Flow />
       <Contact />
       
-      {/* 簡易フッター */}
-      <footer className="bg-slate-900 text-slate-400 py-8 text-center text-sm">
-        <p>© 2026 政獣たちのいるところ: 火日. All rights reserved.</p>
+      <footer className="bg-slate-900 text-slate-400 py-12 text-center text-sm border-t border-slate-800">
+        <p className="font-bold tracking-widest">© 2026 政獣たちのいるところ: 火日</p>
+        <p className="mt-2 text-slate-600 italic">Created with Passion and Code.</p>
       </footer>
     </main>
   );
