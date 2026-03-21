@@ -7,6 +7,13 @@
     import 'swiper/css/navigation';
     import 'swiper/css/pagination';
 
+    // 💡 【新規追加】TypeScriptに「この配列にはこういうデータが入るよ！」と教えるための型（Type）定義
+    type OtherWork = {
+    title: string;
+    category: string;
+    image: string;
+    };
+
     export default function Works() {
     const works = [
         {
@@ -21,21 +28,43 @@
         description: "VTuber公式サイトの制作。世界観を重視したデザインとアニメーションを実装。",
         tags: ["Next.js", "Tailwind CSS", "Framer Motion"]
         },
-        // 他の実績もここに並べる
+        // 他のメイン実績もここに並べる
+    ];
+
+    // 💡 【修正ポイント】空配列に <OtherWork[]> という型を指定してあげる！これでエラーが消え去る！
+    const otherWorks: OtherWork[] = [
+        // --- 追加する時はこんな感じで書く！ ---
+        // { title: "オリジナルロゴ制作", category: "Logo Design", image: "/images/other/logo1.png" },
+        // { title: "YouTube用サムネイル", category: "Thumbnail", image: "/images/other/thumb1.png" },
+        // { title: "キャラクター立ち絵", category: "Illustration", image: "/images/other/illust1.png" },
+        // { title: "歌ってみたMV編集", category: "Movie", image: "/images/other/movie1.png" },
     ];
 
     return (
-        <section id="works" className="scroll-mt-[12vh] py-24 bg-white">
-        <div className="container mx-auto px-6">
-            <div className="text-center mb-16">
-            <h2 className="text-4xl font-black text-slate-900 tracking-tight">Works</h2>
-            <div className="mt-3 w-20 h-1.5 bg-brand-blue mx-auto rounded-full"></div>
-            <div className="mt-6 inline-flex items-center bg-brand-light px-5 py-2 rounded-full border border-brand-blue/10">
-                <span className="text-slate-500 font-bold text-sm">Total Productions:</span>
-                <span className="text-xl font-black text-brand-blue ml-2">12+</span>
-            </div>
+        <section id="works" className="scroll-mt-[12vh] py-24 bg-white relative">
+        <div className="container mx-auto px-6 relative z-10">
+            
+            {/* --- セクションタイトル --- */}
+            <div className="text-center mb-16 md:mb-24">
+            <motion.h2 
+                initial={{ opacity: 0, y: -20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight"
+            >
+                実績紹介
+            </motion.h2>
+            <motion.div 
+                initial={{ width: 0 }}
+                whileInView={{ width: "80px" }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="mt-4 h-1.5 bg-brand-blue mx-auto rounded-full"
+            ></motion.div>
             </div>
 
+            {/* --- メイン実績（Webサイト紹介） --- */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto">
             {works.map((work, index) => (
                 <motion.div 
@@ -43,7 +72,7 @@
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="group bg-slate-50 rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500"
+                className="group bg-slate-50 rounded-[2rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100"
                 >
                 <div className="aspect-video relative overflow-hidden">
                     <Swiper
@@ -66,23 +95,67 @@
                     <div className={`swiper-button-next next-${index} !text-white !w-10 !h-10 !bg-black/30 backdrop-blur-sm rounded-full after:!text-sm opacity-0 group-hover:opacity-100 transition-opacity`}></div>
                     </Swiper>
                 </div>
-                <div className="p-8">
+                <div className="p-8 md:p-10">
                     <div className="flex justify-between items-start mb-4">
-                    <h3 className="text-2xl font-bold text-slate-800">{work.title}</h3>
-                    <a href={work.url} target="_blank" className="bg-white p-2 rounded-full shadow-sm hover:bg-brand-blue hover:text-white transition-colors">
+                    <h3 className="text-2xl font-bold text-slate-800 leading-tight">{work.title}</h3>
+                    <a href={work.url} target="_blank" rel="noopener noreferrer" className="bg-white p-2.5 rounded-full shadow-sm hover:bg-brand-blue hover:text-white transition-colors border border-slate-100">
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                     </a>
                     </div>
-                    <p className="text-slate-600 leading-relaxed mb-6">{work.description}</p>
+                    <p className="text-slate-600 leading-relaxed mb-6 font-medium">{work.description}</p>
                     <div className="flex flex-wrap gap-2">
                     {work.tags.map(tag => (
-                        <span key={tag} className="text-[11px] font-bold px-3 py-1 bg-white text-slate-500 rounded-full border border-slate-200">{tag}</span>
+                        <span key={tag} className="text-xs font-bold px-4 py-1.5 bg-white text-slate-500 rounded-full border border-slate-200 tracking-wider uppercase">{tag}</span>
                     ))}
                     </div>
                 </div>
                 </motion.div>
             ))}
             </div>
+
+            {/* --- その他の実績エリア（今は非表示） --- */}
+            {otherWorks.length > 0 && (
+            <motion.div 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="mt-32 max-w-6xl mx-auto"
+            >
+                <div className="text-center mb-12">
+                <h3 className="text-3xl font-black text-slate-800 tracking-tight">Other Works</h3>
+                <div className="mt-3 w-12 h-1 bg-slate-300 mx-auto rounded-full"></div>
+                </div>
+
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8">
+                {otherWorks.map((item, i) => (
+                    <motion.div 
+                    key={i}
+                    whileHover={{ y: -8, boxShadow: "0px 15px 30px rgba(0,0,0,0.1)" }}
+                    className="group relative bg-slate-50 rounded-3xl overflow-hidden border border-slate-100 transition-all duration-300 cursor-pointer"
+                    >
+                    <div className="aspect-square bg-slate-200 relative overflow-hidden">
+                        {item.image ? (
+                        <img src={item.image} alt={item.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                        ) : (
+                        <div className="w-full h-full flex items-center justify-center text-slate-400 font-bold">No Image</div>
+                        )}
+                        
+                        <div className="absolute top-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <span className="text-[10px] font-bold px-3 py-1 bg-white/90 backdrop-blur-sm text-brand-purple rounded-full shadow-sm uppercase tracking-widest">
+                            {item.category}
+                        </span>
+                        </div>
+                    </div>
+                    
+                    <div className="p-5">
+                        <h4 className="text-sm md:text-base font-bold text-slate-800 line-clamp-2">{item.title}</h4>
+                    </div>
+                    </motion.div>
+                ))}
+                </div>
+            </motion.div>
+            )}
+
         </div>
         </section>
     );
