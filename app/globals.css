@@ -1,7 +1,15 @@
 @import "tailwindcss";
 
 @theme {
+  /* 既存のカラー */
   --color-brand-blue: #4285f4;
   --color-brand-red: #ea4335;
+  
+  /* 💡 新規追加：トーンを合わせた緑・紫・黄色 */
+  --color-brand-green: #34a853;  /* 安心感と先進性のあるクリアな緑 */
+  --color-brand-purple: #9b51e0; /* クリエイティブでミステリアスな紫 */
+  --color-brand-yellow: #fbbc05; /* アクセントに最強なポップな黄色 */
+  
+  /* 背景用ライトカラー */
   --color-brand-light: #f8fafc;
 }
