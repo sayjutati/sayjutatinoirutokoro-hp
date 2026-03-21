@@ -21,14 +21,25 @@
         }
     ];
 
+    // 4つ目のオプションを追加！
+    const options = [
+        { title: "画像追加", price: "+¥500", note: "2枚ごと", type: "blue" },
+        { title: "動画追加", price: "+¥1,000", note: "1個ごと", type: "red" },
+        { title: "ドメイン設定", price: "+¥5,000", note: "代行費用", type: "blue" },
+        { title: "その他オプションの相談", price: "+¥1,000 ~", note: "相談に応じて", type: "blue" }
+    ];
+
     return (
         <section id="service" className="py-24 bg-brand-light">
         <div className="container mx-auto px-6">
+            
+            {/* --- プラン表タイトル --- */}
             <div className="text-center mb-16">
             <h2 className="text-4xl font-black text-slate-900 tracking-tight">Service & Price</h2>
             <div className="mt-3 w-20 h-1.5 bg-brand-red mx-auto rounded-full"></div>
             </div>
 
+            {/* --- プランカード --- */}
             <div className="flex flex-col md:flex-row gap-8 max-w-5xl mx-auto items-stretch">
             {plans.map((plan, i) => (
                 <motion.div
@@ -64,29 +75,43 @@
             ))}
             </div>
 
-            {/* オプション表 */}
-            <div className="mt-20 max-w-3xl mx-auto">
-            <div className="bg-white/50 backdrop-blur-md border border-white p-8 rounded-[2rem] shadow-sm">
-                <h4 className="text-center font-black text-slate-800 mb-8 flex items-center justify-center gap-3">
-                <span className="w-8 h-[2px] bg-slate-200"></span>
-                Options
-                <span className="w-8 h-[2px] bg-slate-200"></span>
+            {/* --- オプション表（4個1列バージョン！） --- */}
+            <div className="mt-20 max-w-5xl mx-auto"> {/* ← 幅を広げたよ */}
+            <div className="bg-white p-6 md:p-10 rounded-[2.5rem] shadow-sm border border-slate-100">
+                <h4 className="text-center font-bold text-slate-700 mb-8 flex items-center justify-center gap-4">
+                <span className="w-12 h-[1px] bg-slate-200"></span>
+                <span className="tracking-widest text-lg">Options</span>
+                <span className="w-12 h-[1px] bg-slate-200"></span>
                 </h4>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {[
-                    { title: "画像追加", price: "+¥500", note: "2枚ごと" },
-                    { title: "動画追加", price: "+¥1,000", note: "1個ごと" },
-                    { title: "ドメイン設定", price: "+¥5,000", note: "代行費用" }
-                ].map(opt => (
-                    <div key={opt.title} className="text-center p-4 bg-white rounded-2xl shadow-sm border border-slate-100">
-                    <p className="text-xs font-bold text-slate-400 mb-1">{opt.title}</p>
-                    <p className="text-xl font-black text-slate-800">{opt.price}</p>
-                    <p className="text-[10px] font-bold text-slate-400 mt-1 uppercase tracking-widest">{opt.note}</p>
-                    </div>
+                
+                {/* md:grid-cols-4 でPC表示時に4個横並びにする */}
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-4 lg:gap-6">
+                {options.map(opt => (
+                    <motion.div 
+                    key={opt.title} 
+                    whileHover={{ y: -5 }}
+                    className={`text-center p-4 lg:p-6 bg-white rounded-2xl shadow-sm border-2 transition-colors duration-300
+                        ${opt.type === 'blue' 
+                        ? 'border-brand-blue/10 hover:border-brand-blue/30 hover:bg-brand-blue/5' 
+                        : 'border-brand-red/10 hover:border-brand-red/30 hover:bg-brand-red/5'
+                        }`}
+                    >
+                    {/* 文字が長くても崩れないように text-xs や text-sm を調整 */}
+                    <p className={`text-xs lg:text-sm font-bold mb-2 ${opt.type === 'blue' ? 'text-brand-blue/80' : 'text-brand-red/80'}`}>
+                        {opt.title}
+                    </p>
+                    <p className="text-2xl lg:text-3xl font-black text-slate-800 tracking-tight">
+                        {opt.price}
+                    </p>
+                    <p className="text-[10px] lg:text-xs font-bold text-slate-400 mt-2 uppercase tracking-widest">
+                        {opt.note}
+                    </p>
+                    </motion.div>
                 ))}
                 </div>
             </div>
             </div>
+
         </div>
         </section>
     );
