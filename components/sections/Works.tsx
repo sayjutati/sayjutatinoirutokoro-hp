@@ -11,12 +11,12 @@
     const works = [
         {
         title: "猫喰ぐるる 公式サイト",
-        url: "https://example.com",
+        url: "https://nekohamigururu.vercel.app",
         images: [
-            "/images/samune1.png",
-            "/images/samune2.png",
-            "/images/samune3.png",
-            "/images/samune4.png",
+            "/images/nekohamigururu/image1.png",
+            "/images/nekohamigururu/image2.png",
+            "/images/nekohamigururu/image3.png",
+            "/images/nekohamigururu/image4.png",
         ],
         description: "VTuber公式サイトの制作。世界観を重視したデザインとアニメーションを実装。",
         tags: ["Next.js", "Tailwind CSS", "Framer Motion"]
