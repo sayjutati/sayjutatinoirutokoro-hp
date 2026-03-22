@@ -1,6 +1,7 @@
     "use client";
     import { motion, Variants, AnimatePresence } from "framer-motion";
     import { useState, useEffect } from "react";
+    import SectionTitle from "@/components/ui/SectionTitle";
 
     // --- アイコンコンポーネント群（ Aboutから継承） ---
     function HearingIcon({ className = "" }: { className?: string }) {
@@ -119,24 +120,8 @@
             
             {/* --- セクションタイトル（ motion統合） --- */}
             {/* Aboutのタイトルを motion統合して再実装 */}
-            <div className="text-center mb-16 md:mb-24">
-            <motion.h2 
-                initial={{ opacity: 0, y: -20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-                className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight"
-            >
-                依頼から制作の流れ
-            </motion.h2>
-            <motion.div 
-                initial={{ width: 0 }}
-                whileInView={{ width: "80px" }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="mt-4 h-1.5 bg-brand-blue mx-auto rounded-full"
-            ></motion.div>
-            </div>
+            {/* --- セクションタイトル --- */}
+            <SectionTitle en="Flow" ja="制作の流れ" watermark="FLOW" color="green" />
 
             {/* --- ステップコンテナ（縦流れ・staggerChildren統合） --- */}
             <motion.div 

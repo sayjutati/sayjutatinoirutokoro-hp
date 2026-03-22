@@ -1,6 +1,7 @@
     "use client";
     import { motion, AnimatePresence } from "framer-motion"; // 💡 motion インポート確認
     import { useState, useEffect } from "react";
+    import SectionTitle from "@/components/ui/SectionTitle";
 
     export default function About() {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -26,12 +27,8 @@
         <div className="container mx-auto px-6 relative z-10 pt-[12vh]">
             
             {/* --- セクションタイトル --- */}
-            <div className="text-center mb-16 md:mb-24">
-            <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight">
-                About Me
-            </h2>
-            <div className="mt-4 h-1.5 bg-brand-blue mx-auto rounded-full w-20"></div>
-            </div>
+        {/* これまで書いてあった <div className="text-center mb-16..."> 〜 </div> を全部消して、これ1行に！ */}
+        <SectionTitle en="About Me" ja="当アカウントの活動について" watermark="ABOUT ME" color="blue" />
 
             {/* --- コンテンツエリア --- */}
             <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-12 md:gap-20 max-w-6xl mx-auto pt-[12vh]">

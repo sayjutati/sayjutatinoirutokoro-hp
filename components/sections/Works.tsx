@@ -6,6 +6,7 @@
     import 'swiper/css';
     import 'swiper/css/navigation';
     import 'swiper/css/pagination';
+    import SectionTitle from "@/components/ui/SectionTitle";
 
     // 💡 【新規追加】TypeScriptに「この配列にはこういうデータが入るよ！」と教えるための型（Type）定義
     type OtherWork = {
@@ -45,24 +46,8 @@
         <div className="container mx-auto px-6 relative z-10">
             
             {/* --- セクションタイトル --- */}
-            <div className="text-center mb-16 md:mb-24">
-            <motion.h2 
-                initial={{ opacity: 0, y: -20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-                className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight"
-            >
-                実績紹介
-            </motion.h2>
-            <motion.div 
-                initial={{ width: 0 }}
-                whileInView={{ width: "80px" }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="mt-4 h-1.5 bg-brand-blue mx-auto rounded-full"
-            ></motion.div>
-            </div>
+            {/* --- セクションタイトル --- */}
+            <SectionTitle en="Works" ja="実績紹介" watermark="WORKS" color="purple" />
 
             {/* --- メイン実績（Webサイト紹介） --- */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto">

@@ -1,5 +1,6 @@
     "use client";
     import { motion } from "framer-motion";
+    import SectionTitle from "@/components/ui/SectionTitle";
 
     export default function Service() {
     const plans = [
@@ -34,10 +35,8 @@
         <div className="container mx-auto px-6">
             
             {/* --- プラン表タイトル --- */}
-            <div className="text-center mb-16">
-            <h2 className="text-4xl font-black text-slate-900 tracking-tight">Service & Price</h2>
-            <div className="mt-3 w-20 h-1.5 bg-brand-red mx-auto rounded-full"></div>
-            </div>
+            {/* --- プラン表タイトル --- */}
+            <SectionTitle en="Service & Price" ja="提供プランと料金" watermark="SERVICE" color="red" />
 
             {/* --- プランカード --- */}
             <div className="flex flex-col md:flex-row gap-8 max-w-5xl mx-auto items-stretch">
