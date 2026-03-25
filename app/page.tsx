@@ -2,6 +2,7 @@ import Header from "@/components/layout/Header"; // ヘッダー追加！
 import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
 import Service from "@/components/sections/Service";
+import Demo from "@/components/sections/Demo";
 import Works from "@/components/sections/Works";
 import Flow from "@/components/sections/Flow";
 import Contact from "@/components/sections/Contact";
@@ -18,6 +19,7 @@ export default function Home() {
       <Hero />
       <About />
       <Service />
+      <Demo />
       <Works />
       <Flow />
       <Contact />
