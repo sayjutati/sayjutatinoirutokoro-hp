@@ -2,6 +2,7 @@
 
     import { useState } from "react";
     import { X } from "lucide-react"; // 閉じるボタン用のアイコン
+    import SectionTitle from "@/components/ui/SectionTitle"; // 💡 メインHPの共通タイトル部品をインポート！
 
     export default function Demo() {
     // 🟢 拡大表示している画像のURLを保存するステート（nullの時は何も表示しない）
@@ -20,13 +21,12 @@
         <section id="demo" className="w-full py-24 bg-gray-50 text-gray-900 relative">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
             
-            <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-black mb-4 tracking-tight">
-                デモサイトのご紹介
-            </h2>
-            <div className="w-16 h-1 bg-blue-600 mx-auto mb-6"></div>
-            <p className="text-lg md:text-xl text-gray-600 font-medium">
-                <br className="hidden md:block" />
+            {/* 🟢 タイトル部分を共通コンポーネントに置き換え！ */}
+            <div className="mb-16">
+            <SectionTitle en="Demo Site" ja="デモサイトのご紹介" watermark="DEMO" color="blue" />
+            
+            <p className="text-center text-lg md:text-xl text-gray-600 font-medium mt-7 md:mt-12">
+                ライトプランで制作可能なデザインの幅を、1つのページに詰め込みました。<br className="hidden md:block" />
                 スクロールするたびに変わる5つの世界観を、ぜひ実際のブラウザで体験してください。
             </p>
             </div>
