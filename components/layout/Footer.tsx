@@ -1,10 +1,11 @@
     "use client";
     import { motion } from "framer-motion";
+    import Link from "next/link"; // 🟢 エラーの原因はこれ！Linkを使うための準備を追加したぞ！
 
     export default function Footer() {
     const snsLinks = [
         { 
-        name: "X (Twitter)", url: "https://twitter.com/", color: "hover:bg-[#1DA1F2]", // 💡 Xのブランドカラーに変更
+        name: "X (Twitter)", url: "https://twitter.com/", color: "hover:bg-[#1DA1F2]",
         icon: <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 md:w-6 md:h-6"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
         },
         { 
@@ -26,13 +27,9 @@
     ];
 
     return (
-        // 💡 背景を slate-900 にして、よりプロっぽく引き締める
         <footer className="bg-slate-900 text-slate-300 pt-16 md:pt-24 pb-8 md:pb-10 relative overflow-hidden">
         
-        {/* 💡 サイトのテーマカラーを繋いだ極上グラデーションライン */}
         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-blue via-brand-purple to-brand-red opacity-80"></div>
-
-        {/* 背景のぼんやりした光 */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-4xl bg-brand-blue/5 blur-[100px] rounded-full pointer-events-none"></div>
 
         <div className="container mx-auto px-6 flex flex-col items-center text-center relative z-10">
@@ -43,7 +40,6 @@
             viewport={{ once: true }}
             className="mb-10 md:mb-16"
             >
-            {/* 💡 Terminal風の装飾 { } を追加 */}
             <h2 className="text-2xl md:text-3xl font-black text-white tracking-widest mb-2 flex items-center justify-center gap-2">
                 <span className="text-brand-blue/40 hidden md:inline">{`{`}</span>
                 政獣たちのいるところ
@@ -51,7 +47,6 @@
             </h2>
             <p className="text-brand-blue font-bold text-sm md:text-lg">@火日（かじつ）</p>
             
-            {/* 💡 点滅するカーソル _ を追加 */}
             <p className="mt-4 text-xs md:text-sm text-slate-400 font-medium tracking-wide flex items-center justify-center">
                 ゆるく生活をクリエイティブに
                 <motion.span 
@@ -62,8 +57,6 @@
             </p>
             </motion.div>
 
-            {/* --- SNSアイコン群 --- */}
-            {/* 💡 スマホ時は gap-4、PC時は gap-8 に最適化 */}
             <div className="flex flex-wrap justify-center gap-4 md:gap-8 mb-12 md:mb-16 max-w-3xl">
             {snsLinks.map((sns, i) => (
                 <motion.a 
@@ -77,23 +70,27 @@
                 transition={{ delay: i * 0.1 }}
                 className="group flex flex-col items-center gap-2 md:gap-3"
                 >
-                {/* 💡 スマホ時は w-12 h-12 に縮小して押しやすさをキープ */}
                 <div className={`w-12 h-12 md:w-14 md:h-14 rounded-full bg-slate-800 border border-slate-700 text-slate-400 flex items-center justify-center transition-all duration-300 shadow-sm ${sns.color} group-hover:text-white group-hover:-translate-y-2 group-hover:shadow-lg group-hover:border-transparent`}>
                     {sns.icon}
                 </div>
-                {/* 💡 文字もスマホ時は少し小さく text-[10px] */}
                 <span className="text-[10px] md:text-xs font-bold text-slate-500 group-hover:text-slate-300 transition-colors tracking-wider">{sns.name}</span>
                 </motion.a>
             ))}
             </div>
 
-            {/* --- コピーライト --- */}
-            <div className="w-full max-w-2xl border-t border-slate-800 pt-6 md:pt-8 flex flex-col items-center">
+            {/* --- コピーライトと特商法リンク --- */}
+            <div className="w-full max-w-2xl border-t border-slate-800 pt-6 md:pt-8 flex flex-col items-center gap-4">
             <p className="text-[9px] md:text-xs text-slate-500 tracking-widest font-medium uppercase flex items-center gap-2">
                 <span className="text-brand-blue/30 font-black text-[10px] md:text-sm">{`< />`}</span>
                 &copy; {new Date().getFullYear()} 政獣たちのいるところ : 火日. All Rights Reserved.
             </p>
+            
+            {/* 🟢 特商法ページへのリンク（フッターの色に合わせて調整！） */}
+            <Link href="/tokushoho" className="text-[10px] md:text-xs text-slate-500 hover:text-slate-300 transition-colors underline underline-offset-4">
+                特定商取引法に基づく表記
+            </Link>
             </div>
+
         </div>
         </footer>
     );
