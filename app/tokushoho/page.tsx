@@ -14,19 +14,15 @@
                 <tbody>
                 <tr className="border-b border-gray-100">
                     <th className="py-4 pr-4 w-1/3 text-gray-600 font-bold align-top">販売事業者名</th>
-                    <td className="py-4 text-gray-800">火日（かじつ）<br /><span className="text-sm text-gray-500">※本名で活動していない場合は、請求があった際に遅滞なく開示いたします。</span></td>
-                </tr>
-                <tr className="border-b border-gray-100">
-                    <th className="py-4 pr-4 w-1/3 text-gray-600 font-bold align-top">代表責任者名</th>
-                    <td className="py-4 text-gray-800">請求があった際に遅滞なく開示いたします。</td>
+                    <td className="py-4 text-gray-800">請求がありましたら、遅滞なく開示いたします。</td>
                 </tr>
                 <tr className="border-b border-gray-100">
                     <th className="py-4 pr-4 w-1/3 text-gray-600 font-bold align-top">所在地</th>
-                    <td className="py-4 text-gray-800">請求があった際に遅滞なく開示いたします。</td>
+                    <td className="py-4 text-gray-800">請求がありましたら、遅滞なく開示いたします。</td>
                 </tr>
                 <tr className="border-b border-gray-100">
                     <th className="py-4 pr-4 w-1/3 text-gray-600 font-bold align-top">電話番号</th>
-                    <td className="py-4 text-gray-800">請求があった際に遅滞なく開示いたします。</td>
+                    <td className="py-4 text-gray-800">請求がありましたら、遅滞なく開示いたします。</td>
                 </tr>
                 <tr className="border-b border-gray-100">
                     <th className="py-4 pr-4 w-1/3 text-gray-600 font-bold align-top">メールアドレス</th>
@@ -34,26 +30,36 @@
                 </tr>
                 <tr className="border-b border-gray-100">
                     <th className="py-4 pr-4 w-1/3 text-gray-600 font-bold align-top">販売価格</th>
-                    <td className="py-4 text-gray-800">各サービスの案内ページをご参照ください。</td>
+                    {/* 🔴 Stripe審査通過のため、具体的な最低価格を明記する！金額は自分の想定に合わせて変えてOK！ */}
+                    <td className="py-4 text-gray-800">Webサイト制作：50,000円〜<br /><span className="text-sm text-gray-500">※ご要件に応じて個別にお見積りいたします。</span></td>
+                </tr>
+                <tr className="border-b border-gray-100">
+                    <th className="py-4 pr-4 w-1/3 text-gray-600 font-bold align-top">商品代金以外の必要料金</th>
+                    <td className="py-4 text-gray-800">銀行振込時の振込手数料、インターネット接続料金等の通信費</td>
                 </tr>
                 <tr className="border-b border-gray-100">
                     <th className="py-4 pr-4 w-1/3 text-gray-600 font-bold align-top">支払方法</th>
-                    <td className="py-4 text-gray-800">クレジットカード決済（Stripe）</td>
+                    <td className="py-4 text-gray-800">クレジットカード決済、銀行振込</td>
                 </tr>
                 <tr className="border-b border-gray-100">
                     <th className="py-4 pr-4 w-1/3 text-gray-600 font-bold align-top">代金の支払時期</th>
-                    <td className="py-4 text-gray-800">各サービスの案内ページにて個別に定めます。</td>
+                    <td className="py-4 text-gray-800">クレジットカード：決済時<br />銀行振込：ご請求書発行後、指定の期日まで</td>
                 </tr>
                 <tr className="border-b border-gray-100">
-                    <th className="py-4 pr-4 w-1/3 text-gray-600 font-bold align-top">サービスの提供時期</th>
-                    <td className="py-4 text-gray-800">ご契約時のヒアリングに基づく制作スケジュールによります。</td>
+                    <th className="py-4 pr-4 w-1/3 text-gray-600 font-bold align-top">役務の提供時期</th>
+                    <td className="py-4 text-gray-800">ご契約時に合意した制作スケジュール・納期（通常1ヶ月〜2ヶ月）に従い納品いたします。</td>
                 </tr>
                 <tr>
                     <th className="py-4 pr-4 w-1/3 text-gray-600 font-bold align-top">返品・キャンセル</th>
-                    <td className="py-4 text-gray-800">商品の性質上、制作開始後のキャンセルおよび返金はお受けしておりません。</td>
+                    <td className="py-4 text-gray-800">提供するサービスの性質上、制作開始後のキャンセル、返品、および返金はお受けしておりません。</td>
                 </tr>
                 </tbody>
             </table>
+
+            {/* 💡 この「どうやって請求するか」の注意書きがないとStripeは省略を認めてくれない！ */}
+            <div className="mt-6 p-4 bg-gray-50 text-sm text-gray-600 rounded-lg border border-gray-200">
+                ※上記における「請求がありましたら、遅滞なく開示いたします」の項目につきましては、上記メールアドレス宛てにご請求をいただいた場合、遅滞なく開示いたします。
+            </div>
             </div>
 
             <div className="mt-12 text-center">
