@@ -1,186 +1,151 @@
     "use client";
-    import { motion, Variants } from "framer-motion";
-    import SectionTitle from "@/components/ui/SectionTitle";
+    import { motion } from "framer-motion";
 
     export default function Service() {
     const plans = [
         {
-        name: "ライトプラン",
-        price: "3,000",
-        description: "まずは名刺代わりのサイトが欲しい方へ",
-        features: ["構成・レイアウト固定", "カラー・テキスト変更可能", "画像10枚まで掲載", "レスポンシブ対応"],
-        color: "brand-blue",
-        recommended: false
+        name: "MINIMAL",
+        price: "¥500",
+        tagline: "名刺代わりのワンコインサイト",
+        description: "Lit.link等のまとめサービスとは違い、Google検索にインデックスされる「あなただけのWebサイト」を構築します。",
+        features: [
+            "名前・自己紹介の掲載",
+            "各種SNS・リンクの設置",
+            "検索エンジン(SEO)対応",
+            "Vercel無料ドメインでの公開",
+        ],
+        color: "from-slate-400 to-slate-600",
+        border: "border-slate-700",
+        buttonBg: "bg-slate-800 hover:bg-slate-700",
+        popular: false,
         },
         {
-        name: "スタンダードプラン",
-        price: "10,000",
-        description: "こだわりと世界観を詰め込みたい方へ",
-        features: ["ヒアリングによるデザイン微調整", "リッチなアニメーション実装", "YouTube等の動画埋め込み(2個)", "SEO基本設定"],
-        color: "brand-red",
-        recommended: true
-        }
+        name: "STANDARD",
+        price: "¥3,000",
+        tagline: "世界観を伝える基本プラン",
+        description: "あなたらしさを表現するオリジナルデザインと、心地よいアニメーションを取り入れたスタンダードな構成です。",
+        features: [
+            "MINIMALプランの全て",
+            "オリジナルデザイン適用",
+            "リッチなアニメーション実装",
+            "スマホ・PC完全レスポンシブ",
+        ],
+        color: "from-cyan-400 to-blue-600", // 💡 ここは君のブランドカラー（brand-blue等）に合わせて変えてね
+        border: "border-blue-500/50",
+        buttonBg: "bg-gradient-to-r from-cyan-500 to-blue-600 hover:opacity-90",
+        popular: true, // 💡 真ん中を目立たせるフラグ
+        },
+        {
+        name: "PREMIUM",
+        price: "¥10,000",
+        tagline: "妥協なしの本格Webサイト",
+        description: "複雑な構成や複数ページなど、あなたの活動をより強力に後押しする、完全オーダーメイドのプランです。",
+        features: [
+            "STANDARDプランの全て",
+            "複数ページの構成対応",
+            "より高度なSEO・導線設計",
+            "※独自ドメイン適用は要相談",
+        ],
+        color: "from-purple-400 to-pink-600", // 💡 ここもブランドカラー（brand-purple等）に合わせて
+        border: "border-purple-500/50",
+        buttonBg: "bg-gradient-to-r from-purple-500 to-pink-600 hover:opacity-90",
+        popular: false,
+        },
     ];
-
-    const options = [
-        { title: "画像追加", price: "+¥500", note: "2枚ごと", type: "blue" },
-        { title: "動画追加", price: "+¥1,000", note: "1個ごと", type: "red" },
-        { title: "ドメイン設定", price: "+¥5,000", note: "代行費用", type: "blue" },
-        { title: "その他オプションの相談", price: "+¥1,000 ~", note: "相談に応じて", type: "purple" }
-    ];
-
-    // アニメーション設定
-    const containerVariants: Variants = {
-        hidden: { opacity: 0 },
-        visible: {
-        opacity: 1,
-        transition: { staggerChildren: 0.2 },
-        },
-    };
-
-    const itemVariants: Variants = {
-        hidden: { opacity: 0, y: 30 },
-        visible: { 
-        opacity: 1, 
-        y: 0,
-        transition: { type: "spring", damping: 15, stiffness: 70 }
-        },
-    };
-
-    // 呼吸する青いブラケット用アニメーション
-    const glowVariants: Variants = {
-        animate: {
-        opacity: [0.3, 0.7, 0.3],
-        transition: { duration: 4, repeat: Infinity, ease: "easeInOut" },
-        },
-    };
 
     return (
-        <section id="service" className="scroll-mt-[12vh] py-24 bg-brand-light relative overflow-hidden">
+        <section id="service" className="bg-slate-900 py-20 relative overflow-hidden">
+        {/* 背景の装飾 */}
+        <div className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[120px] pointer-events-none"></div>
+        <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-purple-500/10 rounded-full blur-[150px] pointer-events-none"></div>
+
         <div className="container mx-auto px-6 relative z-10">
-            
-            {/* --- セクションタイトル（共通コンポーネント！） --- */}
-            <SectionTitle en="Service & Price" ja="提供プランと料金" watermark="SERVICE" color="red" />
-
-            {/* --- プランカード --- */}
-            <motion.div 
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            // 💡 スマホでは縦並び（flex-col）、PCでは横並び（md:flex-row）
-            className="flex flex-col md:flex-row gap-8 lg:gap-12 max-w-5xl mx-auto items-stretch"
-            >
-            {plans.map((plan, i) => (
-                <motion.div
-                key={i}
-                variants={itemVariants}
-                whileHover={{ y: -10, boxShadow: plan.recommended ? "0px 20px 40px rgba(234, 67, 53, 0.2)" : "0px 20px 40px rgba(66, 133, 244, 0.1)" }}
-                // 💡 Terminal-Creative仕様のオシャレなカード！
-                className={`flex-1 relative bg-white rounded-[2.5rem] border transition-all duration-300 overflow-hidden flex flex-col p-8 md:p-10 lg:p-12
-                    ${plan.recommended 
-                    ? 'border-brand-red shadow-[inset_0_0_20px_rgba(234,67,53,0.05)] md:scale-105 z-10' 
-                    : 'border-slate-200 hover:border-slate-800 shadow-[inset_0_0_15px_rgba(66,133,244,0.02)] hover:shadow-[inset_0_0_15px_rgba(66,133,244,0.1)]'
-                    }`}
-                >
-                {/* 💡 装飾：コーナーブラケット */}
-                <motion.span variants={glowVariants} animate="animate" className={`absolute top-4 left-5 text-2xl font-black ${plan.recommended ? 'text-brand-red/40' : 'text-brand-blue/30'}`}>{`{`}</motion.span>
-                <motion.span variants={glowVariants} animate="animate" className={`absolute top-4 right-5 text-2xl font-black ${plan.recommended ? 'text-brand-red/40' : 'text-brand-blue/30'}`}>{`}`}</motion.span>
-                <motion.span variants={glowVariants} animate="animate" className={`absolute bottom-4 left-5 text-2xl font-black ${plan.recommended ? 'text-brand-red/40' : 'text-brand-blue/30'}`}>{`< />`}</motion.span>
-
-                {plan.recommended && (
-                    <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-brand-red to-orange-400"></div>
-                )}
-
-                <div className="relative z-10 flex flex-col h-full">
-                    {plan.recommended && (
-                    <span className="self-start inline-block bg-brand-red text-white text-[10px] md:text-xs font-black px-4 py-1.5 rounded-full shadow-md tracking-widest uppercase mb-6">
-                        Recommended
-                    </span>
-                    )}
-                    
-                    <h3 className={`text-xl md:text-2xl font-black mb-2 uppercase tracking-tight ${plan.recommended ? 'text-brand-red' : 'text-slate-800'}`}>
-                    {plan.name}
-                    </h3>
-                    
-                    <div className="flex items-baseline mb-4">
-                    <span className="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter">¥{plan.price}</span>
-                    <span className="text-slate-400 ml-1 font-bold">〜</span>
-                    </div>
-                    
-                    <p className="text-slate-500 text-sm md:text-base mb-8 font-medium h-auto md:h-12">
-                    {plan.description}
-                    </p>
-                    
-                    <ul className="space-y-4 mb-10 flex-grow">
-                    {plan.features.map(f => (
-                        <li key={f} className="flex items-start text-slate-700 font-medium text-sm md:text-base">
-                        <svg className={`w-5 h-5 mr-3 flex-shrink-0 mt-0.5 ${plan.recommended ? 'text-brand-red' : 'text-brand-blue'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path></svg>
-                        {f}
-                        </li>
-                    ))}
-                    </ul>
-
-                    <a 
-                    href="#contact" 
-                    className={`block text-center py-4 rounded-2xl font-black transition-all text-sm md:text-base tracking-wide
-                        ${plan.recommended 
-                        ? 'bg-brand-red text-white shadow-lg hover:shadow-xl hover:bg-red-600 active:scale-95' 
-                        : 'bg-slate-100 text-slate-800 hover:bg-slate-200 active:scale-95'
-                        }`}
-                    >
-                    このプランで相談する
-                    </a>
-                </div>
-                </motion.div>
-            ))}
-            </motion.div>
-
-            {/* --- オプション表（Terminal-Creative仕様！） --- */}
-            <motion.div 
-            initial={{ opacity: 0, y: 30 }}
+            <motion.div
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mt-16 md:mt-24 max-w-5xl mx-auto"
+            className="text-center mb-16"
             >
-            <div className="bg-white p-6 md:p-10 rounded-[2.5rem] shadow-[0_10px_40px_rgba(0,0,0,0.03)] border border-slate-200 relative overflow-hidden">
-                {/* 💡 背景にうっすらウォーターマーク */}
-                <span className="absolute -bottom-10 -right-10 text-[8rem] font-black text-slate-50 pointer-events-none select-none">OPT</span>
-
-                <h4 className="text-center font-bold text-slate-700 mb-8 flex items-center justify-center gap-4 relative z-10">
-                <span className="w-8 md:w-12 h-[1px] bg-slate-200"></span>
-                <span className="tracking-widest text-base md:text-lg uppercase">Options</span>
-                <span className="w-8 md:w-12 h-[1px] bg-slate-200"></span>
-                </h4>
-                
-                {/* 💡 スマホでは2列（grid-cols-2）、PCでは4列（md:grid-cols-4） */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6 relative z-10">
-                {options.map((opt, i) => (
-                    <motion.div 
-                    key={opt.title} 
-                    whileHover={{ y: -5, scale: 1.02 }}
-                    className={`text-center p-4 lg:p-6 bg-white rounded-2xl shadow-sm border transition-all duration-300
-                        ${opt.type === 'blue' ? 'border-brand-blue/20 hover:border-brand-blue/50 hover:shadow-[0_5px_15px_rgba(66,133,244,0.1)]' 
-                        : opt.type === 'red' ? 'border-brand-red/20 hover:border-brand-red/50 hover:shadow-[0_5px_15px_rgba(234,67,53,0.1)]'
-                        : 'border-brand-purple/20 hover:border-brand-purple/50 hover:shadow-[0_5px_15px_rgba(155,81,224,0.1)]'
-                        }`}
-                    >
-                    <p className={`text-[10px] md:text-xs font-bold mb-2 tracking-wider ${
-                        opt.type === 'blue' ? 'text-brand-blue/80' : opt.type === 'red' ? 'text-brand-red/80' : 'text-brand-purple/80'
-                    }`}>
-                        {opt.title}
-                    </p>
-                    <p className="text-xl md:text-2xl lg:text-3xl font-black text-slate-800 tracking-tight">
-                        {opt.price}
-                    </p>
-                    <p className="text-[9px] md:text-[10px] lg:text-xs font-bold text-slate-400 mt-2 uppercase tracking-widest">
-                        {opt.note}
-                    </p>
-                    </motion.div>
-                ))}
-                </div>
-            </div>
+            <h2 className="text-3xl md:text-4xl font-black text-white tracking-widest mb-4 flex items-center justify-center gap-2">
+                <span className="text-blue-500/40">{`{`}</span>
+                SERVICES
+                <span className="text-blue-500/40">{`}`}</span>
+            </h2>
+            <p className="text-slate-400 font-medium">用途に合わせた3つのプラン</p>
             </motion.div>
+
+            {/* 💡 Lit.linkとの違いをアピールするマーケティングバナー */}
+            <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="max-w-3xl mx-auto mb-16 bg-slate-800/50 border border-slate-700 p-6 rounded-2xl text-center backdrop-blur-sm"
+            >
+            <h3 className="text-xl font-bold text-white mb-2">SNSのリンク集だけで満足していませんか？</h3>
+            <p className="text-slate-300 text-sm md:text-base leading-relaxed">
+                よくあるリンクまとめサービスは手軽ですが、検索エンジンには表示されにくい弱点があります。<br className="hidden md:block"/>
+                当サービスの<span className="text-cyan-400 font-bold">「MINIMALプラン(¥500)」</span>なら、Google検索にもインデックスされる<br className="hidden md:block"/>
+                "ちゃんとしたWebサイト"として、あなただけのページを持つことができます。
+            </p>
+            </motion.div>
+
+            {/* プランカード群 */}
+            <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {plans.map((plan, i) => (
+                <motion.div
+                key={plan.name}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className={`relative flex flex-col p-8 rounded-3xl bg-slate-800/80 backdrop-blur-sm border ${plan.border} ${plan.popular ? 'transform md:-translate-y-4 shadow-2xl shadow-blue-900/20' : 'shadow-xl shadow-black/20'}`}
+                >
+                {/* おすすめバッジ */}
+                {plan.popular && (
+                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-cyan-400 to-blue-500 text-white text-xs font-bold px-4 py-1 rounded-full tracking-wider">
+                    MOST POPULAR
+                    </div>
+                )}
+
+                <h3 className={`text-xl font-black mb-2 bg-clip-text text-transparent bg-gradient-to-r ${plan.color}`}>
+                    {plan.name}
+                </h3>
+                <div className="text-4xl font-black text-white mb-2">{plan.price}<span className="text-sm text-slate-400 font-normal ml-1">(税込)</span></div>
+                <p className="text-slate-400 text-sm font-medium mb-6">{plan.tagline}</p>
+
+                <p className="text-slate-300 text-sm mb-8 leading-relaxed h-20">
+                    {plan.description}
+                </p>
+
+                <ul className="flex-grow space-y-4 mb-8">
+                    {plan.features.map((feature, j) => (
+                    <li key={j} className="flex items-start text-sm text-slate-300">
+                        <svg className={`w-5 h-5 mr-3 mt-0.5 shrink-0 text-transparent bg-clip-text bg-gradient-to-br ${plan.color}`} fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                        </svg>
+                        {/* ★がついている項目（検索エンジン）はハイライトする */}
+                        <span className={feature.includes("検索エンジン") ? "font-bold text-white" : ""}>
+                        {feature}
+                        </span>
+                    </li>
+                    ))}
+                </ul>
+
+                <button className={`w-full py-3 rounded-xl text-white font-bold transition-all duration-300 ${plan.buttonBg}`}>
+                    依頼を相談する
+                </button>
+                </motion.div>
+            ))}
+            </div>
+
+            {/* 💡 支払い方法に関する注意事項 */}
+            <div className="mt-16 text-center max-w-2xl mx-auto">
+            <p className="text-slate-400 text-sm bg-slate-800/50 p-4 rounded-xl border border-slate-700/50">
+                <span className="text-brand-red font-bold">※ お支払い方法について</span><br />
+                現在、制作費のお支払いは<strong className="text-slate-200">「銀行振込」のみ</strong>とさせていただいております。<br />
+                恐れ入りますが、振込手数料はお客様にてご負担をお願いいたします。
+            </p>
+            </div>
 
         </div>
         </section>

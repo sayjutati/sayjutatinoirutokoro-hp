@@ -16,22 +16,9 @@
     };
 
     export default function Works() {
-    const works: any[] = [
-        /* 💡 ぐるる公開時はここのコメントアウトを外すだけ！
-        {
-        title: "猫喰ぐるる 公式サイト",
-        url: "https://nekohamigururu.vercel.app",
-        images: [
-            "/images/nekohamigururu/image1.png",
-            "/images/nekohamigururu/image2.png",
-            "/images/nekohamigururu/image3.png",
-            "/images/nekohamigururu/image4.png",
-        ],
-        description: "VTuber公式サイトの制作。世界観を重視したデザインとアニメーションを実装。",
-        tags: ["Next.js", "Tailwind CSS", "Framer Motion"]
-        },
-        */
-    ];
+    // 💡 エラーの原因だったコメントアウト部分を一旦スッキリさせたよ！
+    // 実績を追加するときは、この配列の中にオブジェクトを書いてね。
+    const works: any[] = [];
 
     // その他の実績も今は空っぽ（将来追加するときはここに入れる）
     const otherWorks: OtherWork[] = [];
@@ -77,19 +64,15 @@
                     </div>
 
                     {/* テキストエリア */}
-                    {/* 💡 スマホ時は余白を p-6 に、PC時は p-10 に！ */}
                     <div className="p-6 md:p-10 flex flex-col flex-grow">
                     <div className="flex justify-between items-start mb-4 gap-4">
-                        {/* 💡 タイトル文字サイズをスマホ最適化 */}
                         <h3 className="text-xl md:text-2xl font-bold text-slate-800 leading-tight">{work.title}</h3>
                         <a href={work.url} target="_blank" rel="noopener noreferrer" className="bg-white p-2.5 rounded-full shadow-sm hover:bg-brand-purple hover:text-white transition-colors border border-slate-100 flex-shrink-0">
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                         </a>
                     </div>
-                    {/* 💡 説明文もスマホ時は text-sm に */}
                     <p className="text-slate-600 leading-relaxed mb-6 font-medium text-sm md:text-base flex-grow">{work.description}</p>
                     <div className="flex flex-wrap gap-2">
-                        {/* 💡 タグもスマホ時に圧迫感がないように text-[10px] に */}
                         {work.tags.map((tag: string) => (
                         <span key={tag} className="text-[10px] md:text-xs font-bold px-3 md:px-4 py-1.5 bg-white text-slate-500 rounded-full border border-slate-200 tracking-wider uppercase">{tag}</span>
                         ))}
@@ -104,7 +87,6 @@
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                // 💡 余白と文字サイズをスマホ対応
                 className="max-w-3xl mx-auto text-center py-12 md:py-24 px-6 bg-slate-50 border-2 border-slate-200 border-dashed rounded-[2rem] flex flex-col items-center justify-center"
             >
                 <span className="text-4xl md:text-5xl mb-4">🛠️</span>
@@ -126,7 +108,6 @@
                 <div className="mt-3 w-10 md:w-12 h-1 bg-slate-300 mx-auto rounded-full"></div>
                 </div>
 
-                {/* 💡 スマホ時は2列、PC時は4列で表示 */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
                 {otherWorks.map((item, i) => (
                     <motion.div 
@@ -148,7 +129,6 @@
                         </div>
                     </div>
                     
-                    {/* 💡 スマホ時はパディングを狭く */}
                     <div className="p-4 md:p-5">
                         <h4 className="text-xs md:text-sm font-bold text-slate-800 line-clamp-2">{item.title}</h4>
                     </div>
