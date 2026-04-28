@@ -86,17 +86,34 @@ export default function Demo() {
           </Swiper>
         </div>
 
-        {/* 🚀 デモサイトへのリンクボタン (元のデザインを維持！) */}
+        {/* 🚀 デモサイトへのリンクボタン */}
         <div className="flex justify-center relative z-10">
-          <a 
-            href="https://demo-site-dusky-three.vercel.app/" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="px-10 py-5 bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex items-center gap-3"
+          {/* 💡 ボタン全体を常時ふわふわさせるためのラッパーを追加！ */}
+          <motion.div
+            animate={{ y: [0, -8, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
           >
-            デモサイトを実際に見てみる
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-          </a>
+            <motion.a 
+              href="https://demo-site-dusky-three.vercel.app/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.95 }}
+              className="group relative overflow-hidden px-10 py-5 bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-400 text-white font-bold text-lg md:text-xl rounded-full shadow-[0_10px_30px_-10px_rgba(59,130,246,0.6)] hover:shadow-[0_15px_40px_-10px_rgba(6,182,212,0.8)] transition-all duration-300 flex items-center gap-3 border border-white/10"
+            >
+              {/* キラッと光るエフェクト（ホバー時に左から右へ流れる） */}
+              <div className="absolute inset-0 -translate-x-[150%] group-hover:translate-x-[150%] transition-transform duration-1000 ease-in-out bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 z-0"></div>
+              
+              <span className="relative z-10 flex items-center gap-3 tracking-wider">
+                デモサイトを実際に見てみる
+                <svg className="group-hover:translate-x-1.5 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </span>
+            </motion.a>
+          </motion.div>
         </div>
 
       </div>
