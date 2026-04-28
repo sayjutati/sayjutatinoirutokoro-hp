@@ -16,19 +16,35 @@
     };
 
     export default function Works() {
-    // 💡 エラーの原因だったコメントアウト部分を一旦スッキリさせたよ！
-    // 実績を追加するときは、この配列の中にオブジェクトを書いてね。
-    const works: any[] = [];
+    // 💡 実績のサンプルとして「Concept（架空の実績）」を配置！
+    // 今後本当の実績ができたら、ここを書き換えるか追加していってね。
+    const works: any[] = [
+        {
+        title: "【Concept】イラストレーター向けポートフォリオ",
+        url: "https://demo-site-dusky-three.vercel.app/",
+        description: "「作品が主役になる」をコンセプトに、余白を贅沢に使ったギャラリーサイト。スクロールに合わせて作品がふわっと浮かび上がるギミックを搭載し、ただの保管庫ではない「魅せる展示室」を構築しました。",
+        tags: ["Portfolio", "Minimalist", "Animation"],
+        images: ["/images/demosite/image1.png", "/images/demosite/image2.png", "/images/demosite/image3.png"]
+        }
+    ];
 
     // その他の実績も今は空っぽ（将来追加するときはここに入れる）
     const otherWorks: OtherWork[] = [];
 
     return (
-        <section id="works" className="scroll-mt-[12vh] py-24 bg-white relative">
+        <section id="works" className="scroll-mt-[12vh] py-24 bg-white relative overflow-hidden">
+        
+        {/* 背景のうっすらした装飾（世界観の統一） */}
+        <div className="absolute top-1/4 right-0 w-[40vw] h-[40vw] bg-brand-blue/5 rounded-full blur-[100px] pointer-events-none translate-x-1/3"></div>
+        <div className="absolute bottom-1/4 left-0 w-[30vw] h-[30vw] bg-brand-red/5 rounded-full blur-[100px] pointer-events-none -translate-x-1/3"></div>
+
         <div className="container mx-auto px-6 relative z-10">
             
             {/* --- セクションタイトル --- */}
             <SectionTitle en="Works" ja="実績紹介" watermark="WORKS" color="purple" />
+            <p className="text-center text-slate-500 font-medium mt-4 mb-12 md:mb-16 text-sm md:text-base">
+            これまでに共犯者として手掛けた、<br className="block md:hidden" />作品を輝かせるための「器」の記録。
+            </p>
 
             {/* --- メイン実績エリア --- */}
             {works.length > 0 ? (
@@ -48,13 +64,13 @@
                         modules={[Navigation, Pagination, Autoplay]}
                         navigation={{ nextEl: `.next-${index}`, prevEl: `.prev-${index}` }}
                         pagination={{ clickable: true }}
-                        autoplay={{ delay: 4000 }}
+                        autoplay={{ delay: 4000, disableOnInteraction: false }}
                         loop={true}
                         className="w-full h-full"
                     >
                         {work.images.map((img: string, i: number) => (
                         <SwiperSlide key={i}>
-                            <img src={img} alt="" className="w-full h-full object-cover" />
+                            <img src={img} alt={`${work.title}のスクリーンショット ${i+1}`} className="w-full h-full object-cover object-top" />
                         </SwiperSlide>
                         ))}
                         {/* 💡 スマホ時はボタンを少し小さく（w-8 h-8）、PC時は標準サイズ（md:w-10 md:h-10） */}
@@ -64,17 +80,21 @@
                     </div>
 
                     {/* テキストエリア */}
-                    <div className="p-6 md:p-10 flex flex-col flex-grow">
+                    <div className="p-6 md:p-10 flex flex-col flex-grow bg-white">
                     <div className="flex justify-between items-start mb-4 gap-4">
-                        <h3 className="text-xl md:text-2xl font-bold text-slate-800 leading-tight">{work.title}</h3>
-                        <a href={work.url} target="_blank" rel="noopener noreferrer" className="bg-white p-2.5 rounded-full shadow-sm hover:bg-brand-purple hover:text-white transition-colors border border-slate-100 flex-shrink-0">
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        <h3 className="text-xl md:text-2xl font-black text-slate-800 leading-tight">{work.title}</h3>
+                        <a href={work.url} target="_blank" rel="noopener noreferrer" className="bg-slate-50 p-3 rounded-full shadow-sm hover:bg-brand-blue hover:text-white transition-colors border border-slate-100 flex-shrink-0 group/btn">
+                        <svg className="w-5 h-5 transition-transform group-hover/btn:-translate-y-0.5 group-hover/btn:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                         </a>
                     </div>
-                    <p className="text-slate-600 leading-relaxed mb-6 font-medium text-sm md:text-base flex-grow">{work.description}</p>
+                    <p className="text-slate-600 leading-relaxed mb-6 font-medium text-sm md:text-base flex-grow">
+                        {work.description}
+                    </p>
                     <div className="flex flex-wrap gap-2">
                         {work.tags.map((tag: string) => (
-                        <span key={tag} className="text-[10px] md:text-xs font-bold px-3 md:px-4 py-1.5 bg-white text-slate-500 rounded-full border border-slate-200 tracking-wider uppercase">{tag}</span>
+                        <span key={tag} className="text-[10px] md:text-xs font-bold px-3 md:px-4 py-1.5 bg-slate-100 text-slate-500 rounded-full border border-slate-200 tracking-wider uppercase">
+                            #{tag}
+                        </span>
                         ))}
                     </div>
                     </div>
@@ -87,11 +107,22 @@
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="max-w-3xl mx-auto text-center py-12 md:py-24 px-6 bg-slate-50 border-2 border-slate-200 border-dashed rounded-[2rem] flex flex-col items-center justify-center"
+                className="max-w-3xl mx-auto text-center py-16 md:py-24 px-6 bg-slate-50 border-2 border-slate-200 border-dashed rounded-[2rem] flex flex-col items-center justify-center relative overflow-hidden"
             >
-                <span className="text-4xl md:text-5xl mb-4">🛠️</span>
-                <p className="text-lg md:text-2xl font-black text-slate-400 mb-2 tracking-widest uppercase">Coming Soon</p>
-                <p className="text-sm md:text-base text-slate-500 font-bold">ただいま公開に向けて、新しい実績を準備中です。</p>
+                <div className="absolute inset-0 bg-gradient-to-br from-white/50 to-transparent z-0"></div>
+                <div className="relative z-10">
+                <span className="text-5xl md:text-6xl mb-6 block drop-shadow-md">🖼️</span>
+                <p className="text-xl md:text-3xl font-black text-slate-700 mb-4 tracking-tight">
+                    ここはまだ、空っぽのギャラリーです。
+                </p>
+                <p className="text-sm md:text-base text-slate-500 font-bold mb-8 leading-relaxed">
+                    記念すべき「最初の共犯者」を探しています。<br className="hidden md:block" />
+                    あなたの最高な作品を飾るための、特別な額縁を造らせてください。
+                </p>
+                <a href="#contact" className="inline-block px-8 py-4 bg-slate-800 hover:bg-brand-blue text-white font-bold rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1">
+                    最初の依頼人になる
+                </a>
+                </div>
             </motion.div>
             )}
 
