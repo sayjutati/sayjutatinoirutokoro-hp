@@ -3,11 +3,30 @@ import { motion, Variants } from "framer-motion";
 import { useEffect, useState } from "react";
 
 export default function Hero() {
-  // 💡 ハイドレーションエラーを防ぐため、マウント状態を管理
   const [isMounted, setIsMounted] = useState(false);
+  // 💡 アニメーションの状態を管理するstate（10秒ごとに切り替える）
+  const [animState, setAnimState] = useState("hidden");
 
   useEffect(() => {
     setIsMounted(true);
+    
+    // 初回ロード時は少し待ってから集める
+    const initialTimer = setTimeout(() => {
+        setAnimState("visible");
+    }, 100);
+
+    // 💡 10秒ごとに「散る → 1.2秒後に再び集まる」をループさせる！
+    const loopInterval = setInterval(() => {
+        setAnimState("hidden"); // 一旦四方に散らす
+        setTimeout(() => {
+            setAnimState("visible"); // 1.2秒後にまた集める
+        }, 1200);
+    }, 10000);
+
+    return () => {
+        clearTimeout(initialTimer);
+        clearInterval(loopInterval);
+    };
   }, []);
 
   // ① 表示するテキストを設定
@@ -29,9 +48,8 @@ export default function Hero() {
     },
   };
 
-  // ③ 1文字ごとのアニメーション設定（四方八方から集まる）
+  // ③ 1文字ごとのアニメーション設定（四方八方から集まる / 散る）
   const getLetterVariants = (index: number): Variants => {
-    // 💡 サーバーとクライアントでの計算ズレを防ぐため Math.round で整数にする
     const angle = (index * 137.5) * (Math.PI / 180);
     const distance = 120 + (index % 5) * 60; 
     
@@ -46,6 +64,11 @@ export default function Hero() {
         y: startY,
         rotate: startRotate,
         scale: 0.5,
+        // 💡 散る時もフワッと動くようにアニメーションを追加
+        transition: {
+          duration: 0.8,
+          ease: "easeInOut"
+        }
       },
       visible: {
         opacity: 1,
@@ -62,7 +85,6 @@ export default function Hero() {
     };
   };
 
-  // 💡 以前使っていたキラキラグラデーションスタイル
   const gradientStyle = {
     backgroundImage: `linear-gradient(120deg, transparent 30%, rgba(234, 67, 53, 0.9) 50%, transparent 70%), linear-gradient(to bottom, #4285f4, #0f172a)`,
     backgroundSize: "200% 100%, 100% 100%",
@@ -73,7 +95,7 @@ export default function Hero() {
   return (
     <section id="top" className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden pt-[12vh] md:pt-0">
       
-      {/* 💡 背景動画を復元 */}
+      {/* 背景動画 */}
       <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover z-0 blur-2xl scale-[1.15] opacity-80">
         <source src="/movie/movie2.mp4" type="video/mp4" />
       </video>
@@ -87,13 +109,13 @@ export default function Hero() {
         <motion.div 
           variants={containerVariants} 
           initial="hidden" 
-          animate={isMounted ? "visible" : "hidden"} 
+          // 💡 ここを animState に連動させて10秒ループさせる
+          animate={isMounted ? animState : "hidden"} 
           className="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left z-20 mt-8 md:mt-0 order-2 md:order-1"
         >
           <h1 className="font-extrabold leading-tight w-full flex flex-col items-center md:items-start">
             
             {/* 上段：火日（かじつ） */}
-            {/* 💡 サイズを約1.3倍〜1.5倍に大きくして「火日」を強調！ */}
             <div className="text-5xl md:text-[5.5rem] flex flex-wrap justify-center md:justify-start overflow-visible mb-2 md:mb-6">
               {nameLetters.map((letter, i) => (
                 <motion.span
@@ -110,7 +132,6 @@ export default function Hero() {
             </div>
 
             {/* 下段：@政獣たちのいるところ */}
-            {/* 💡 こちらもバランスをとってサイズアップ */}
             <div className="text-3xl md:text-6xl flex flex-wrap justify-center md:justify-start overflow-visible mt-2 md:mt-4 md:ml-[4.5rem]">
               {subLetters.map((letter, i) => (
                 <motion.span
@@ -128,11 +149,12 @@ export default function Hero() {
           </h1>
 
           {/* サブタイトル */}
-          {/* 💡 上の文字サイズに合わせて、位置（margin-left）も微調整 */}
+          {/* 💡 サブタイトルも親要素の animState (hidden / visible) に連動して消えたり出たりする */}
           <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={isMounted ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ delay: 1.5, duration: 0.8 }}
+            variants={{
+                hidden: { opacity: 0, y: 20, transition: { duration: 0.5 } },
+                visible: { opacity: 1, y: 0, transition: { delay: 1.5, duration: 0.8 } }
+            }}
             className="mt-6 md:mt-10 text-lg md:text-xl text-slate-800 font-bold md:ml-[8.5rem] drop-shadow-md"
           >
             ゆるく生活をクリエイティブに。
@@ -146,7 +168,6 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.5 }} 
           className="w-full md:w-1/2 flex justify-center relative order-1 md:order-2 mb-8 md:mb-0"
         >
-          {/* 💡 以前の画像と装飾デザインを復元 */}
           <div className="relative w-64 h-64 md:w-[28rem] md:h-[28rem] rounded-full border-4 md:border-8 border-white overflow-hidden bg-white shadow-[-10px_-10px_30px_rgba(253,234,237,0.8),_10px_10px_30px_rgba(232,240,254,0.8)] z-10">
             <img src="/images/main1.png" alt="火日" className="object-cover w-full h-full" />
           </div>
