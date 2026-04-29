@@ -28,16 +28,11 @@ export default function Demo() {
     <section id="demo" className="w-full py-24 bg-gray-50 text-gray-900 relative">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         
-        {/* 🟢 タイトル部分 (元のデザインを維持！) */}
+        {/* 🟢 タイトル部分 (不要な文章を削除してスッキリ！) */}
         <div className="mb-12 md:mb-16">
           <SectionTitle en="Demo Site" ja="デモサイトのご紹介" watermark="DEMO" color="blue" />
           
-          <p className="text-center text-lg md:text-xl text-gray-600 font-medium mt-7 md:mt-12">
-            ライトプランで制作可能なデザインの幅を、1つのページに詰め込みました。<br className="hidden md:block" />
-            スクロールするたびに変わる5つの世界観を、ぜひ実際のブラウザで体験してください。
-          </p>
-
-          <p className="text-center text-blue-500 font-bold mt-4 text-sm md:text-base tracking-widest">
+          <p className="text-center text-blue-500 font-bold mt-8 md:mt-12 text-sm md:text-base tracking-widest">
             ↓ 画像をクリックすると拡大して見れるよ！ ↓
           </p>
         </div>
