@@ -1,7 +1,7 @@
 import Header from "@/components/layout/Header"; // ヘッダー追加！
 import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
-import Service from "@/components/sections/Service";
+// import Service from "@/components/sections/Service";
 import Demo from "@/components/sections/Demo";
 import Works from "@/components/sections/Works";
 import Flow from "@/components/sections/Flow";
@@ -18,7 +18,7 @@ export default function Home() {
           ※Hero自体は画面全体に広がるから、すりガラスのヘッダー越しに動画が見えて超綺麗になるぜ！ */}
       <Hero />
       <About />
-      <Service />
+      {/* <Service /> */}
       <Demo />
       <Works />
       <Flow />
