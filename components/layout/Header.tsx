@@ -35,10 +35,10 @@
             </div>
             <div className="flex flex-col">
                 <span className="font-extrabold text-base md:text-xl text-slate-800 tracking-wider">
-                政獣たちのいるところ
+                火日（かじつ）
                 </span>
                 <span className="text-[10px] md:text-sm text-brand-blue font-bold">
-                @火日（かじつ）
+                @政獣たちのいるところ
                 </span>
             </div>
             </a>

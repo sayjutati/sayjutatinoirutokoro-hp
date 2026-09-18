@@ -96,7 +96,7 @@ export default function About() {
       <div className="container mx-auto px-6 relative z-10">
         
         {/* --- セクションタイトル（共通部品呼び出し！） --- */}
-        <SectionTitle en="About Me" ja="私について" watermark="ABOUT" color="blue" />
+        <SectionTitle en="About Me" ja="自己紹介" watermark="ABOUT" color="blue" />
 
         {/* オシャレ空間「Terminal-Creative」コンテナ */}
         <motion.div 
@@ -135,9 +135,9 @@ export default function About() {
                   }}
                   className="inline-block tracking-tighter pb-1"
                 >
-                  あなたの『最高』を飾るための、<br className="block lg:hidden" />『最適』な額縁を用意する。
+                  君の世界を魅せる場所を。
                 </motion.span>
-                <br className="hidden lg:block" />
+                <br />
                 <motion.span 
                   animate={{ backgroundPosition: ["200% center", "-200% center"] }}
                   transition={{ repeat: Infinity, duration: 4, ease: "linear", delay: 3 }}
@@ -149,32 +149,16 @@ export default function About() {
                   }}
                   className="inline-block tracking-tighter pb-1 mt-3 lg:mt-4 text-xl md:text-2xl lg:text-3xl opacity-90"
                 >
-                  活動をバックアップする共犯者
+                  個人配信者・クリエイターのためのWebサイト制作。
                 </motion.span>
               </h3>
 
-              {/* 本文エリア */}
-              {/* 💡 強制改行(br)を減らして、画面幅に応じた自然な折り返しに。段落間の余白で読みやすさを担保 */}
-              <motion.div variants={itemVariants} className="space-y-6 md:space-y-7 text-slate-700 leading-[1.8] font-medium text-base md:text-lg">
-                <p>
-                  「政獣たちのいるところ」のクリエイター、
-                  {/* 💡 火日のサイズを少し落ち着かせてバランス調整 */}
-                  <span className="text-brand-blue font-bold text-lg md:text-xl mx-1">火日（かじつ）</span>です。
-                </p>
-                <p>
-                  本命を輝かせる裏方。<br />
-                  個人クリエイターを<strong className="text-brand-red font-black">全力でバックアップ</strong>する。
-                </p>
-                <p>
-                  あなたが思い描く『理想の景色』を、私が持ちうる『現実の技術』で組み上げる。
-                  サイトという『器』を造り上げる作業は、裏方である私にお任せください。
-                  あなたはただ、そこに注ぐ『中身』を創り出す営みにだけ、向かい合えるように。
-                </p>
-                <p>
-                  専属の「サイト制作班」。
-                  班とは名ばかりの個人ですが、だからこそ小回りが利く。だからこそ寄り添える。
-                  あなただけの世界を構築する<strong className="text-brand-blue font-black">共犯者</strong>として。一緒に、最高に面白いものを企てましょう。
-                </p>
+              <motion.div variants={itemVariants} className="space-y-5 md:space-y-6 text-slate-700 leading-[1.8] font-medium text-base md:text-lg">
+                <p>個人配信者・クリエイター向けに、Webサイトを制作しています。</p>
+                <p>SNSや配信だけでは伝えきれない、あなたの活動や世界観。</p>
+                <p>それらを表現する最高の場所にします。</p>
+                <p>目指しているのは、君の魅力を世界に伝えること。</p>
+                <p>君の活動を支え、いろんな人たちに知ってもらうための場所をつくります。</p>
               </motion.div>
             </div>
 

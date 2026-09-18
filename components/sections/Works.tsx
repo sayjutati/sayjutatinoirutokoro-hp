@@ -43,7 +43,7 @@
             {/* --- セクションタイトル --- */}
             <SectionTitle en="Works" ja="実績紹介" watermark="WORKS" color="purple" />
             <p className="text-center text-slate-500 font-medium mt-4 mb-12 md:mb-16 text-sm md:text-base">
-            これまでに共犯者として手掛けた、<br className="block md:hidden" />作品を輝かせるための「器」の記録。
+            これまでに手掛けた、<br className="block md:hidden" />作品を見せるためのサイトの記録。
             </p>
 
             {/* --- メイン実績エリア --- */}
@@ -116,8 +116,8 @@
                     ここはまだ、空っぽのギャラリーです。
                 </p>
                 <p className="text-sm md:text-base text-slate-500 font-bold mb-8 leading-relaxed">
-                    記念すべき「最初の共犯者」を探しています。<br className="hidden md:block" />
-                    あなたの最高な作品を飾るための、特別な額縁を造らせてください。
+                    最初の依頼を探しています。<br className="hidden md:block" />
+                    作品の見せ方は、こちらでつくります。
                 </p>
                 <a href="#contact" className="inline-block px-8 py-4 bg-slate-800 hover:bg-brand-blue text-white font-bold rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1">
                     最初の依頼人になる

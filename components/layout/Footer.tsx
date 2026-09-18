@@ -42,10 +42,10 @@
             >
             <h2 className="text-2xl md:text-3xl font-black text-white tracking-widest mb-2 flex items-center justify-center gap-2">
                 <span className="text-brand-blue/40 hidden md:inline">{`{`}</span>
-                政獣たちのいるところ
+                火日（かじつ）
                 <span className="text-brand-blue/40 hidden md:inline">{`}`}</span>
             </h2>
-            <p className="text-brand-blue font-bold text-sm md:text-lg">@火日（かじつ）</p>
+            <p className="text-brand-blue font-bold text-sm md:text-lg">@政獣たちのいるところ</p>
             
             <p className="mt-4 text-xs md:text-sm text-slate-400 font-medium tracking-wide flex items-center justify-center">
                 ゆるく生活をクリエイティブに
@@ -82,7 +82,7 @@
             <div className="w-full max-w-2xl border-t border-slate-800 pt-6 md:pt-8 flex flex-col items-center gap-4">
             <p className="text-[9px] md:text-xs text-slate-500 tracking-widest font-medium uppercase flex items-center gap-2">
                 <span className="text-brand-blue/30 font-black text-[10px] md:text-sm">{`< />`}</span>
-                &copy; {new Date().getFullYear()} 政獣たちのいるところ : 火日. All Rights Reserved.
+                &copy; {new Date().getFullYear()} 火日 : 政獣たちのいるところ. All Rights Reserved.
             </p>
             
             {/* 🟢 特商法ページへのリンク（フッターの色に合わせて調整！） */}

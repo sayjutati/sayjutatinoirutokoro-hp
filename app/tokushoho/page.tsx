@@ -31,7 +31,7 @@
                 <tr className="border-b border-gray-100">
                     <th className="py-4 pr-4 w-1/3 text-gray-600 font-bold align-top">販売価格</th>
                     {/* 🔴 Stripe審査通過のため、具体的な最低価格を明記する！金額は自分の想定に合わせて変えてOK！ */}
-                    <td className="py-4 text-gray-800">Webサイト制作：50,000円〜<br /><span className="text-sm text-gray-500">※ご要件に応じて個別にお見積りいたします。</span></td>
+                    <td className="py-4 text-gray-800">Webサイト制作：10,000円〜<br /><span className="text-sm text-gray-500">※ご要件に応じて個別にお見積りいたします。</span></td>
                 </tr>
                 <tr className="border-b border-gray-100">
                     <th className="py-4 pr-4 w-1/3 text-gray-600 font-bold align-top">商品代金以外の必要料金</th>
@@ -39,11 +39,11 @@
                 </tr>
                 <tr className="border-b border-gray-100">
                     <th className="py-4 pr-4 w-1/3 text-gray-600 font-bold align-top">支払方法</th>
-                    <td className="py-4 text-gray-800">クレジットカード決済、銀行振込</td>
+                    <td className="py-4 text-gray-800">銀行振込のみ</td>
                 </tr>
                 <tr className="border-b border-gray-100">
                     <th className="py-4 pr-4 w-1/3 text-gray-600 font-bold align-top">代金の支払時期</th>
-                    <td className="py-4 text-gray-800">クレジットカード：決済時<br />銀行振込：ご請求書発行後、指定の期日まで</td>
+                    <td className="py-4 text-gray-800">ご請求書発行後、指定の期日まで</td>
                 </tr>
                 <tr className="border-b border-gray-100">
                     <th className="py-4 pr-4 w-1/3 text-gray-600 font-bold align-top">役務の提供時期</th>
