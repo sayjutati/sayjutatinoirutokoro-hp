@@ -20,6 +20,18 @@
     // 今後本当の実績ができたら、ここを書き換えるか追加していってね。
     const works: any[] = [
         {
+        title: "【 猫喰ぐるる 様 公式HP 】",
+        url: "https://nekohami-gururu.com/",
+        description: "かわいいからかっこいいまで、ギミックを盛りだくさんな遊び心あるサイトに仕上げました。",
+        tags: ["ぐるるのおもちゃ", "ぐるるの噛み跡"],
+        images: [
+            "/images/works/nekohami-gururu-1.png",
+            "/images/works/nekohami-gururu-2.png",
+            "/images/works/nekohami-gururu-3.png",
+            "/images/works/nekohami-gururu-4.png",
+        ]
+        },
+        {
         title: "【Concept】イラストレーター向けポートフォリオ",
         url: "https://demo-site-dusky-three.vercel.app/",
         description: "「作品が主役になる」をコンセプトに、余白を贅沢に使ったギャラリーサイト。スクロールに合わせて作品がふわっと浮かび上がるギミックを搭載し、ただの保管庫ではない「魅せる展示室」を構築しました。",
