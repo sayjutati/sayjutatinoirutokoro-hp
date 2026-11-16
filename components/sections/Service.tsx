@@ -74,7 +74,7 @@ export default function Service() {
                     {/* サブタイトル（// SERVICES ●） */}
                     <div className="relative z-10 flex items-center gap-2 md:gap-3 mb-1 md:mb-2">
                         <span className="text-blue-500 font-bold tracking-widest uppercase text-xs md:text-sm">
-                            // SERVICES
+                            {"// SERVICES"}
                         </span>
                         <span className="w-2 h-2 md:w-2.5 md:h-2.5 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.8)]"></span>
                     </div>

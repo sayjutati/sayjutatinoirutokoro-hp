@@ -149,12 +149,12 @@ export default function About() {
                   }}
                   className="inline-block tracking-tighter pb-1 mt-3 lg:mt-4 text-xl md:text-2xl lg:text-3xl opacity-90"
                 >
-                  個人配信者・クリエイターのためのWebサイト制作。
+                  個人配信者・動画投稿者のためのWebサイト制作。
                 </motion.span>
               </h3>
 
               <motion.div variants={itemVariants} className="space-y-5 md:space-y-6 text-slate-700 leading-[1.8] font-medium text-base md:text-lg">
-                <p>個人配信者・クリエイター向けに、Webサイトを制作しています。</p>
+                <p>VTuberに限らず、企業に所属していない個人配信者・動画投稿者向けに、オリジナルHPを制作しています。</p>
                 <p>SNSや配信だけでは伝えきれない、あなたの活動や世界観。</p>
                 <p>それらを表現する最高の場所にします。</p>
                 <p>目指しているのは、君の魅力を世界に伝えること。</p>

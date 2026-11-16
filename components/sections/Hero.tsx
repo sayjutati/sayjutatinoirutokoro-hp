@@ -8,6 +8,8 @@ export default function Hero() {
   const [animState, setAnimState] = useState("hidden");
 
   useEffect(() => {
+    // マウント後にだけ文字アニメーションを開始するため、意図的にeffect内で更新している
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsMounted(true);
     
     // 初回ロード時は少し待ってから集める

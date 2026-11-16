@@ -119,7 +119,7 @@
                     // 💡 修正ポイント: ボタンの余白も少しだけ圧縮 (py-3 -> py-2.5)
                     className="mt-1 w-full text-center py-2.5 bg-brand-blue text-white rounded-xl font-black shadow-md hover:shadow-lg text-sm transition-all active:scale-95"
                     >
-                    無料相談・お問い合わせ
+                    ご相談・お問い合わせ
                     </a>
                 </div>
                 </motion.div>

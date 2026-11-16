@@ -1,7 +1,20 @@
     "use client";
     import SectionTitle from "@/components/ui/SectionTitle";
 
+    type Platform = {
+    name: string;
+    url: string;
+    };
+
     export default function Contact() {
+    // URLが空の出品先は表示しない
+    const platforms: Platform[] = [
+        { name: "ココナラ", url: "" },
+        { name: "SKIMA", url: "" },
+        { name: "ランサーズ", url: "" },
+    ];
+    const visiblePlatforms = platforms.filter((p) => p.url.trim() !== "");
+
     return (
         <section id="contact" className="scroll-mt-[12vh] py-24 bg-brand-light relative overflow-hidden">
         <div className="container mx-auto px-6 max-w-4xl relative z-10">
@@ -11,7 +24,7 @@
             
             {/* 💡 スマホ時は文字を少し小さく、行間を開けて読みやすく（text-sm md:text-xl） */}
             <p className="text-slate-600 mb-10 md:mb-12 text-center text-sm md:text-xl font-medium leading-relaxed">
-            ご依頼の相談や、プランに関する質問など、お気軽にご連絡ください。<br className="hidden md:block" />
+            ご依頼の相談や、こだわりたいことなど、お気軽にご連絡ください。<br className="hidden md:block" />
             X（旧Twitter）のDMからでも大歓迎です。
             </p>
 
@@ -39,7 +52,7 @@
             <div className="mb-8 md:mb-10">
                 <label htmlFor="message" className="block text-slate-700 text-xs md:text-sm font-bold mb-2 ml-2 tracking-wide">ご相談内容</label>
                 {/* 💡 スマホ時は h-32（少し低め）にして画面占有率を下げる */}
-                <textarea id="message" name="message" required className="w-full px-4 py-3 md:px-6 md:py-4 bg-slate-50 border border-slate-200 rounded-xl md:rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-yellow/50 transition-all h-32 md:h-48 resize-none font-medium text-sm md:text-base" placeholder="スタンダードプランでのご依頼を検討しています..."></textarea>
+                <textarea id="message" name="message" required className="w-full px-4 py-3 md:px-6 md:py-4 bg-slate-50 border border-slate-200 rounded-xl md:rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-yellow/50 transition-all h-32 md:h-48 resize-none font-medium text-sm md:text-base" placeholder="オリジナルHPの制作を検討しています..."></textarea>
             </div>
             
             {/* --- ボタンエリア --- */}
@@ -66,6 +79,27 @@
 
             </div>
             </form>
+
+            {visiblePlatforms.length > 0 && (
+            <div className="mt-10 md:mt-12 text-center">
+                <p className="text-slate-600 text-sm md:text-base font-bold mb-4">
+                こちらからも依頼できるよ！
+                </p>
+                <div className="flex flex-wrap justify-center gap-3 md:gap-4">
+                {visiblePlatforms.map((platform) => (
+                    <a
+                    key={platform.name}
+                    href={platform.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-6 md:px-8 py-3 bg-white text-slate-700 font-bold rounded-full border border-slate-200 shadow-sm hover:bg-brand-blue hover:text-white hover:border-transparent hover:-translate-y-1 hover:shadow-lg transition-all duration-300 text-sm md:text-base"
+                    >
+                    {platform.name}
+                    </a>
+                ))}
+                </div>
+            </div>
+            )}
 
         </div>
         </section>

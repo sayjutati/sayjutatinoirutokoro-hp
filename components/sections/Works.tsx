@@ -15,10 +15,18 @@
     image: string;
     };
 
+    type Work = {
+    title: string;
+    url: string;
+    description: string;
+    tags: string[];
+    images: string[];
+    };
+
     export default function Works() {
     // 💡 実績のサンプルとして「Concept（架空の実績）」を配置！
     // 今後本当の実績ができたら、ここを書き換えるか追加していってね。
-    const works: any[] = [
+    const works: Work[] = [
         {
         title: "【 猫喰ぐるる 様 公式HP 】",
         url: "https://nekohami-gururu.com/",

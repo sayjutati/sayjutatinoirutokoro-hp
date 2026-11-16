@@ -5,6 +5,7 @@ import About from "@/components/sections/About";
 import Demo from "@/components/sections/Demo";
 import Works from "@/components/sections/Works";
 import Flow from "@/components/sections/Flow";
+import Guide from "@/components/sections/Guide";
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/layout/Footer"; // フッター追加！
 
@@ -22,6 +23,7 @@ export default function Home() {
       <Demo />
       <Works />
       <Flow />
+      <Guide />
       <Contact />
       
       {/* 画面の一番下にフッターを配置（既存の短いfooter要素は消して、こっちに差し替え！） */}

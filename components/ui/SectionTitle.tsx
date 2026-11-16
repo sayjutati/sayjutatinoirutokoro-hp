@@ -37,7 +37,7 @@
         >
             {/* Terminalライクな英語サブタイトル（先頭に // をつける） */}
             <span className={`text-xs md:text-sm font-bold ${dotColor} tracking-[0.3em] uppercase mb-2 md:mb-3`}>
-            // {en}
+            {"// "}{en}
             </span>
             {/* 日本語メインタイトル（末尾のドット . にアクセントカラーをつける！） */}
             <h2 className="text-3xl md:text-6xl font-black text-slate-900 tracking-tight">
