@@ -23,6 +23,16 @@ function EyeIcon({ className = "" }: { className?: string }) {
         <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
     );
 }
+function MailIcon({ className = "" }: { className?: string }) {
+    return (
+        <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+    );
+}
+function ClockIcon({ className = "" }: { className?: string }) {
+    return (
+        <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    );
+}
 function GlobeIcon({ className = "" }: { className?: string }) {
     return (
         <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
@@ -62,6 +72,7 @@ export default function Flow() {
     const steps: {
         name: string;
         title: string;
+        duration?: string;
         description: string;
         youDo?: string;
         Icon: ({ className }: { className?: string }) => React.JSX.Element;
@@ -94,14 +105,29 @@ export default function Flow() {
                 border: "border-purple-200",
                 bgSolid: "bg-purple-500",
                 from: "from-purple-500",
-                to: "to-red-500"
+                to: "to-pink-500"
             }
         },
         { 
             name: "Step 3", 
-            title: "テスト版の確認", 
-            description: "テスト版を限定公開するので、実際の画面で確認してください。", 
-            youDo: "テスト版を見て、直したいところを伝える",
+            title: "デモ版のご連絡", 
+            duration: "制作開始から1〜2週間",
+            description: "デモ版ができたら、ご連絡します。", 
+            Icon: MailIcon, 
+            theme: {
+                main: "text-pink-500",
+                bgLight: "bg-pink-50",
+                border: "border-pink-200",
+                bgSolid: "bg-pink-500",
+                from: "from-pink-500",
+                to: "to-red-500"
+            }
+        },
+        { 
+            name: "Step 4", 
+            title: "ご確認・修正", 
+            description: "デモ版をご確認いただき、直したいところがあれば修正します。", 
+            youDo: "デモ版を見て、直したいところを伝える",
             Icon: EyeIcon, 
             theme: {
                 main: "text-red-500",
@@ -113,7 +139,7 @@ export default function Flow() {
             }
         },
         { 
-            name: "Step 4", 
+            name: "Step 5", 
             title: "公開", 
             description: "Vercelでサイトを公開します。", 
             Icon: DeliveryIcon, 
@@ -127,7 +153,7 @@ export default function Flow() {
             }
         },
         { 
-            name: "Step 5", 
+            name: "Step 6", 
             title: "ドメイン設定", 
             description: "依頼者さん名義で用意してもらったドメインを設定します。", 
             youDo: "ドメインを依頼者さん名義で用意する",
@@ -142,7 +168,7 @@ export default function Flow() {
             }
         },
         { 
-            name: "Step 6", 
+            name: "Step 7", 
             title: "クレジットを入れて納品", 
             description: "サイトのクレジットに「サイト制作：火日-かじつ-」を入れて納品します。", 
             Icon: PackageIcon, 
@@ -202,7 +228,7 @@ export default function Flow() {
                                 {/* メインのカード（余計な装飾を省いてスッキリ！） */}
                                 <div className="flex flex-col bg-white p-6 md:p-8 rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition-all duration-300">
                                     
-                                    {/* ヘッダー部分（Step, アイコン） */}
+                                    {/* ヘッダー部分（Step, アイコン, 期間） */}
                                     <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
                                         <div className={`flex items-center gap-3 md:gap-4 ${step.theme.main}`}>
                                             <div className={`w-12 h-12 ${step.theme.bgLight} rounded-xl p-2.5 shrink-0`}>
@@ -213,6 +239,14 @@ export default function Flow() {
                                                 <h3 className="font-black text-xl md:text-2xl text-slate-800 leading-tight mt-1">{step.title}</h3>
                                             </div>
                                         </div>
+
+                                        {/* 期間バッジ */}
+                                        {step.duration && (
+                                        <div className="flex items-center w-fit gap-1.5 bg-slate-100 text-slate-500 px-3 py-1.5 rounded-full text-[10px] md:text-xs font-bold shrink-0">
+                                            <ClockIcon className="w-3.5 h-3.5 md:w-4 md:h-4" />
+                                            目安: {step.duration}
+                                        </div>
+                                        )}
                                     </div>
 
                                     {/* 説明文 */}

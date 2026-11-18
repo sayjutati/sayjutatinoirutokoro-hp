@@ -21,6 +21,7 @@
     description: string;
     tags: string[];
     images: string[];
+    accent: string;
     };
 
     export default function Works() {
@@ -32,19 +33,27 @@
         url: "https://nekohami-gururu.com/",
         description: "かわいいからかっこいいまで、ギミックを盛りだくさんな遊び心あるサイトに仕上げました。",
         tags: ["ぐるるのおもちゃ", "ぐるるの噛み跡"],
+        accent: "border-[#ff9ec4]",
         images: [
             "/images/works/nekohami-gururu-1.png",
             "/images/works/nekohami-gururu-2.png",
             "/images/works/nekohami-gururu-3.png",
             "/images/works/nekohami-gururu-4.png",
+            "/images/works/nekohami-gururu-5.png",
         ]
         },
         {
-        title: "【Concept】イラストレーター向けポートフォリオ",
-        url: "https://demo-site-dusky-three.vercel.app/",
-        description: "「作品が主役になる」をコンセプトに、余白を贅沢に使ったギャラリーサイト。スクロールに合わせて作品がふわっと浮かび上がるギミックを搭載し、ただの保管庫ではない「魅せる展示室」を構築しました。",
-        tags: ["Portfolio", "Minimalist", "Animation"],
-        images: ["/images/demosite/image1.png", "/images/demosite/image2.png", "/images/demosite/image3.png"]
+        title: "【 橙々しじま 様 公式HP 】",
+        url: "https://www.toudousijima.com/",
+        description: "自滅系作家の橙々しじま。\n過去執筆作品はNolaノベルにて絶賛公開中！",
+        tags: ["三二　一"],
+        accent: "border-[#f0b15a]",
+        images: [
+            "/images/works/toudou-sijima-1.jpg",
+            "/images/works/toudou-sijima-2.jpg",
+            "/images/works/toudou-sijima-3.png",
+            "/images/works/toudou-sijima-4.jpg",
+        ]
         }
     ];
 
@@ -69,14 +78,14 @@
             {/* --- メイン実績エリア --- */}
             {works.length > 0 ? (
             // 💡 スマホ時は1列、PC（lg）時は2列でゆったり配置
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 max-w-6xl mx-auto">
+            <div className={`grid grid-cols-1 gap-8 md:gap-12 mx-auto ${works.length > 1 ? 'lg:grid-cols-2 max-w-6xl' : 'max-w-3xl'}`}>
                 {works.map((work, index) => (
                 <motion.div 
                     key={index}
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="group bg-slate-50 rounded-[2rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100 flex flex-col"
+                    className={`group bg-slate-50 rounded-[2rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border ${work.accent} flex flex-col`}
                 >
                     {/* Swiperによる画像スライダー */}
                     <div className="aspect-video relative overflow-hidden">
@@ -107,7 +116,7 @@
                         <svg className="w-5 h-5 transition-transform group-hover/btn:-translate-y-0.5 group-hover/btn:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                         </a>
                     </div>
-                    <p className="text-slate-600 leading-relaxed mb-6 font-medium text-sm md:text-base flex-grow">
+                    <p className="text-slate-600 leading-relaxed mb-6 font-medium text-sm md:text-base flex-grow whitespace-pre-line">
                         {work.description}
                     </p>
                     <div className="flex flex-wrap gap-2">

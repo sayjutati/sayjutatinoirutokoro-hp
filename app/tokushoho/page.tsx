@@ -30,28 +30,39 @@
                 </tr>
                 <tr className="border-b border-gray-100">
                     <th className="py-4 pr-4 w-1/3 text-gray-600 font-bold align-top">販売価格</th>
-                    {/* 🔴 Stripe審査通過のため、具体的な最低価格を明記する！金額は自分の想定に合わせて変えてOK！ */}
-                    <td className="py-4 text-gray-800">Webサイト制作：10,000円〜<br /><span className="text-sm text-gray-500">※ご要件に応じて個別にお見積りいたします。</span></td>
+                    <td className="py-4 text-gray-800">
+                    <ul className="space-y-1">
+                        <li>ココナラ：20,000円（税込）</li>
+                        <li>SKIMA：21,000円（税込）</li>
+                        <li>ランサーズ（パッケージ）：20,000円（税込）</li>
+                    </ul>
+                    <span className="block mt-2 text-sm text-gray-500">※制作費には、公開と運用の費用を含みます。</span>
+                    </td>
                 </tr>
                 <tr className="border-b border-gray-100">
                     <th className="py-4 pr-4 w-1/3 text-gray-600 font-bold align-top">商品代金以外の必要料金</th>
-                    <td className="py-4 text-gray-800">銀行振込時の振込手数料、インターネット接続料金等の通信費</td>
+                    <td className="py-4 text-gray-800">
+                    <ul className="list-disc pl-5 space-y-2">
+                        <li>ドメイン費用（年額）は、ご依頼者様のご負担となります。</li>
+                        <li>ドメインの取得代行、またはドメインの変更・移管を当方で行う場合の事務手数料：5,000円</li>
+                        <li>大きな変更が3回を超えた場合の追加料金：3,000円/回（公開前・公開後で別々に数えます）</li>
+                        <li>公開後のセクションの内容変更：2,000円から</li>
+                        <li>リニューアル：要相談（作り直しの場合は10,000円）</li>
+                        <li>他の制作者へ移管する場合の費用：50,000円（ソース一式のコピーの引き渡しと、当方のVercelからの取り外しのみ）</li>
+                    </ul>
+                    </td>
                 </tr>
                 <tr className="border-b border-gray-100">
-                    <th className="py-4 pr-4 w-1/3 text-gray-600 font-bold align-top">支払方法</th>
-                    <td className="py-4 text-gray-800">銀行振込のみ</td>
-                </tr>
-                <tr className="border-b border-gray-100">
-                    <th className="py-4 pr-4 w-1/3 text-gray-600 font-bold align-top">代金の支払時期</th>
-                    <td className="py-4 text-gray-800">ご請求書発行後、指定の期日まで</td>
+                    <th className="py-4 pr-4 w-1/3 text-gray-600 font-bold align-top">支払方法・支払時期</th>
+                    <td className="py-4 text-gray-800">ご利用の出品先（ココナラ・SKIMA・ランサーズ）の決済方法と規定に従います。</td>
                 </tr>
                 <tr className="border-b border-gray-100">
                     <th className="py-4 pr-4 w-1/3 text-gray-600 font-bold align-top">役務の提供時期</th>
-                    <td className="py-4 text-gray-800">ご契約時に合意した制作スケジュール・納期（通常1ヶ月〜2ヶ月）に従い納品いたします。</td>
+                    <td className="py-4 text-gray-800">制作開始から1〜2週間を目安にデモ版をご連絡します。デモ版のご確認後に、公開・納品します。</td>
                 </tr>
                 <tr>
-                    <th className="py-4 pr-4 w-1/3 text-gray-600 font-bold align-top">返品・キャンセル</th>
-                    <td className="py-4 text-gray-800">提供するサービスの性質上、制作開始後のキャンセル、返品、および返金はお受けしておりません。</td>
+                    <th className="py-4 pr-4 w-1/3 text-gray-600 font-bold align-top">返品・キャンセル・返金</th>
+                    <td className="py-4 text-gray-800">ご利用の出品先（ココナラ・SKIMA・ランサーズ）の規定に従います。</td>
                 </tr>
                 </tbody>
             </table>
